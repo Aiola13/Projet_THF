@@ -1,335 +1,326 @@
 {
-  
-  "bindings": {
-    "/actions/vrtk": {
-      "chords": [],
-      "poses": [
-        {
-          "output": "/actions/vrtk/in/pose",
-          "path": "/user/hand/left/pose/raw"
-        },
-        {
-          "output": "/actions/vrtk/in/pose",
-          "path": "/user/hand/right/pose/raw"
-        }
-      ],
-      "haptics": [
-        {
-          "output": "/actions/vrtk/out/haptic",
-          "path": "/user/hand/left/output/haptic"
-        },
-        {
-          "output": "/actions/vrtk/out/haptic",
-          "path": "/user/hand/right/output/haptic"
-        }
-      ],
-      "sources": [
-        {
-          "path": "/user/hand/left/input/trigger",
-          "mode": "button",
-          "parameters": {},
-          "inputs": {
-            "click": {
-              "output": "/actions/vrtk/in/triggerbutton"
+   "bindings" : {
+      "/actions/buggy" : {
+         "sources" : [
+            {
+               "inputs" : {
+                  "position" : {
+                     "output" : "/actions/buggy/in/steering"
+                  }
+               },
+               "mode" : "joystick",
+               "path" : "/user/hand/left/input/thumbstick"
             },
-            "touch": {
-              "output": "/actions/vrtk/in/triggertouch"
-            }
-          }
-        },
-        {
-          "path": "/user/hand/left/input/trackpad",
-          "mode": "trackpad",
-          "parameters": {},
-          "inputs": {
-            "position": {
-              "output": "/actions/vrtk/in/touchpadposition"
+            {
+               "inputs" : {
+                  "position" : {
+                     "output" : "/actions/buggy/in/steering"
+                  }
+               },
+               "mode" : "joystick",
+               "path" : "/user/hand/right/input/thumbstick"
             },
-            "touch": {
-              "output": "/actions/vrtk/in/touchpadtouch"
-            }
-          }
-        },
-        {
-          "path": "/user/hand/left/input/grip",
-          "mode": "force_sensor",
-          "parameters": {},
-          "inputs": {
-            "force": {
-              "output": "/actions/vrtk/in/gripsqueeze"
-            }
-          }
-        },
-        {
-          "path": "/user/hand/right/input/grip",
-          "mode": "force_sensor",
-          "parameters": {},
-          "inputs": {
-            "force": {
-              "output": "/actions/vrtk/in/gripsqueeze"
-            }
-          }
-        },
-        {
-          "path": "/user/hand/left/input/trackpad",
-          "mode": "button",
-          "parameters": {},
-          "inputs": {
-            "click": {
-              "output": "/actions/vrtk/in/touchpadbutton"
+            {
+               "inputs" : {
+                  "pull" : {
+                     "output" : "/actions/buggy/in/throttle"
+                  }
+               },
+               "mode" : "trigger",
+               "path" : "/user/hand/left/input/trigger"
             },
-            "touch": {
-              "output": "/actions/vrtk/in/touchpadtouch"
-            }
-          }
-        },
-        {
-          "path": "/user/hand/right/input/trigger",
-          "mode": "button",
-          "parameters": {},
-          "inputs": {
-            "click": {
-              "output": "/actions/vrtk/in/triggerbutton"
+            {
+               "inputs" : {
+                  "pull" : {
+                     "output" : "/actions/buggy/in/throttle"
+                  }
+               },
+               "mode" : "trigger",
+               "path" : "/user/hand/right/input/trigger"
             },
-            "touch": {
-              "output": "/actions/vrtk/in/triggertouch"
-            }
-          }
-        },
-        {
-          "path": "/user/hand/right/input/trackpad",
-          "mode": "trackpad",
-          "parameters": {},
-          "inputs": {
-            "position": {
-              "output": "/actions/vrtk/in/touchpadposition"
+            {
+               "inputs" : {
+                  "click" : {
+                     "output" : "/actions/buggy/in/brake"
+                  }
+               },
+               "mode" : "button",
+               "path" : "/user/hand/left/input/a"
             },
-            "touch": {
-              "output": "/actions/vrtk/in/touchpadtouch"
-            }
-          }
-        },
-        {
-          "path": "/user/hand/right/input/trackpad",
-          "mode": "button",
-          "parameters": {},
-          "inputs": {
-            "click": {
-              "output": "/actions/vrtk/in/touchpadbutton"
+            {
+               "inputs" : {
+                  "click" : {
+                     "output" : "/actions/buggy/in/brake"
+                  }
+               },
+               "mode" : "button",
+               "path" : "/user/hand/right/input/a"
             },
-            "touch": {
-              "output": "/actions/vrtk/in/touchpadtouch"
+            {
+               "inputs" : {
+                  "click" : {
+                     "output" : "/actions/buggy/in/reset"
+                  }
+               },
+               "mode" : "button",
+               "path" : "/user/hand/left/input/b"
+            },
+            {
+               "inputs" : {
+                  "click" : {
+                     "output" : "/actions/buggy/in/reset"
+                  }
+               },
+               "mode" : "button",
+               "path" : "/user/hand/right/input/b"
             }
-          }
-        },
-        {
-          "path": "/user/hand/left/input/grip",
-          "mode": "grab",
-          "parameters": {
-            "force_hold_threshold": "0.02",
-            "force_release_threshold": "0.01"
+         ]
+      },
+      "/actions/default" : {
+         "chords" : [],
+         "haptics" : [
+            {
+               "output" : "/actions/default/out/haptic",
+               "path" : "/user/hand/left/output/haptic"
+            },
+            {
+               "output" : "/actions/default/out/haptic",
+               "path" : "/user/hand/right/output/haptic"
+            }
+         ],
+         "poses" : [
+            {
+               "output" : "/actions/default/in/pose",
+               "path" : "/user/hand/left/pose/raw"
+            },
+            {
+               "output" : "/actions/default/in/pose",
+               "path" : "/user/hand/right/pose/raw"
+            }
+         ],
+         "skeleton" : [
+            {
+               "output" : "/actions/default/in/skeletonlefthand",
+               "path" : "/user/hand/left/input/skeleton/left"
+            },
+            {
+               "output" : "/actions/default/in/skeletonrighthand",
+               "path" : "/user/hand/right/input/skeleton/right"
+            }
+         ],
+        "sources": [
+          {
+            "inputs": {
+              "click": {
+                "output": "/actions/default/in/interactui"
+              }
+            },
+            "mode": "button",
+            "path": "/user/hand/left/input/trigger"
           },
-          "inputs": {
-            "grab": {
-              "output": "/actions/vrtk/in/gripbutton"
-            }
-          }
-        },
-        {
-          "path": "/user/hand/right/input/grip",
-          "mode": "grab",
-          "parameters": {
-            "force_hold_threshold": "0.02",
-            "force_release_threshold": "0.01"
+          {
+            "inputs": {
+              "force": {
+                "output": "/actions/default/in/squeeze"
+              }
+            },
+            "mode": "force_sensor",
+            "path": "/user/hand/left/input/grip"
           },
-          "inputs": {
-            "grab": {
-              "output": "/actions/vrtk/in/gripbutton"
-            }
+          {
+            "inputs": {
+              "force": {
+                "output": "/actions/default/in/squeeze"
+              }
+            },
+            "mode": "force_sensor",
+            "path": "/user/hand/right/input/grip"
+          },
+          {
+            "inputs": {
+              "click": {
+                "output": "/actions/default/in/teleport"
+              }
+            },
+            "mode": "button",
+            "path": "/user/hand/left/input/trackpad"
+          },
+          {
+            "inputs": {
+              "click": {
+                "output": "/actions/default/in/interactui"
+              }
+            },
+            "mode": "button",
+            "path": "/user/hand/right/input/trigger"
+          },
+          {
+            "inputs": {
+              "click": {
+                "output": "/actions/default/in/teleport"
+              }
+            },
+            "mode": "button",
+            "path": "/user/hand/right/input/trackpad"
+          },
+          {
+            "inputs": {
+              "north": {
+                "output": "/actions/default/in/teleport"
+              }
+            },
+            "mode": "dpad",
+            "parameters": {
+              "deadzone_pct": "25",
+              "overlap_pct": "30",
+              "sub_mode": "touch"
+            },
+            "path": "/user/hand/left/input/thumbstick"
+          },
+          {
+            "inputs": {
+              "north": {
+                "output": "/actions/default/in/teleport"
+              }
+            },
+            "mode": "dpad",
+            "parameters": {
+              "deadzone_pct": "25",
+              "overlap_pct": "30",
+              "sub_mode": "touch"
+            },
+            "path": "/user/hand/right/input/thumbstick"
+          },
+          {
+            "inputs": {
+              "east": {
+                "output": "/actions/default/in/snapturnright"
+              },
+              "west": {
+                "output": "/actions/default/in/snapturnleft"
+              }
+            },
+            "mode": "dpad",
+            "parameters": {
+              "deadzone_pct": "85",
+              "overlap_pct": "0",
+              "sub_mode": "touch"
+            },
+            "path": "/user/hand/left/input/thumbstick"
+          },
+          {
+            "inputs": {
+              "east": {
+                "output": "/actions/default/in/snapturnright"
+              },
+              "west": {
+                "output": "/actions/default/in/snapturnleft"
+              }
+            },
+            "mode": "dpad",
+            "parameters": {
+              "deadzone_pct": "85",
+              "overlap_pct": "0",
+              "sub_mode": "touch"
+            },
+            "path": "/user/hand/right/input/thumbstick"
+          },
+          {
+            "inputs": {
+              "grab": {
+                "output": "/actions/default/in/grabgrip"
+              }
+            },
+            "mode": "grab",
+            "parameters": {
+              "force_hold_threshold": "0.02",
+              "force_release_threshold": "0.01"
+            },
+            "path": "/user/hand/left/input/grip"
+          },
+          {
+            "inputs": {
+              "grab": {
+                "output": "/actions/default/in/grabgrip"
+              }
+            },
+            "mode": "grab",
+            "parameters": {
+              "force_hold_threshold": "0.02",
+              "force_release_threshold": "0.01"
+            },
+            "path": "/user/hand/right/input/grip"
+          },
+          {
+            "inputs": {
+              "grab": {
+                "output": "/actions/default/in/grabpinch"
+              }
+            },
+            "mode": "grab",
+            "parameters": {
+              "force_hold_threshold": "0.02",
+              "force_release_threshold": "0.01"
+            },
+            "path": "/user/hand/left/input/pinch"
+          },
+          {
+            "inputs": {
+              "grab": {
+                "output": "/actions/default/in/grabpinch"
+              }
+            },
+            "mode": "grab",
+            "parameters": {
+              "force_hold_threshold": "0.02",
+              "force_release_threshold": "0.01"
+            },
+            "path": "/user/hand/right/input/pinch"
           }
-        },
-        {
-          "path": "/user/hand/left/input/grip",
-          "mode": "button",
-          "parameters": {},
-          "inputs": {
-            "click": {
-              "output": "/actions/vrtk/in/gripbutton"
+        ]
+      },
+      "/actions/platformer" : {
+         "sources" : [
+            {
+               "inputs" : {
+                  "position" : {
+                     "output" : "/actions/platformer/in/move"
+                  }
+               },
+               "mode" : "joystick",
+               "path" : "/user/hand/left/input/thumbstick"
             },
-            "touch": {
-              "output": "/actions/vrtk/in/griptouch"
+            {
+               "inputs" : {
+                  "position" : {
+                     "output" : "/actions/platformer/in/move"
+                  }
+               },
+               "mode" : "joystick",
+               "path" : "/user/hand/right/input/thumbstick"
+            },
+            {
+               "inputs" : {
+                  "click" : {
+                     "output" : "/actions/platformer/in/jump"
+                  }
+               },
+               "mode" : "button",
+               "path" : "/user/hand/left/input/trigger"
+            },
+            {
+               "inputs" : {
+                  "click" : {
+                     "output" : "/actions/platformer/in/jump"
+                  }
+               },
+               "mode" : "button",
+               "path" : "/user/hand/right/input/trigger"
             }
-          }
-        },
-        {
-          "path": "/user/hand/right/input/grip",
-          "mode": "button",
-          "parameters": {},
-          "inputs": {
-            "click": {
-              "output": "/actions/vrtk/in/gripbutton"
-            },
-            "touch": {
-              "output": "/actions/vrtk/in/griptouch"
-            }
-          }
-        },
-        {
-          "path": "/user/hand/left/input/a",
-          "mode": "button",
-          "parameters": {},
-          "inputs": {
-            "click": {
-              "output": "/actions/vrtk/in/buttononeclick"
-            },
-            "touch": {
-              "output": "/actions/vrtk/in/buttononetouch"
-            }
-          }
-        },
-        {
-          "path": "/user/hand/right/input/a",
-          "mode": "button",
-          "parameters": {},
-          "inputs": {
-            "click": {
-              "output": "/actions/vrtk/in/buttononeclick"
-            },
-            "touch": {
-              "output": "/actions/vrtk/in/buttononetouch"
-            }
-          }
-        },
-        {
-          "path": "/user/hand/left/input/trigger",
-          "mode": "trigger",
-          "parameters": {},
-          "inputs": {
-            "click": {
-              "output": "/actions/vrtk/in/triggerbutton"
-            },
-            "pull": {
-              "output": "/actions/vrtk/in/triggersqueeze"
-            },
-            "touch": {
-              "output": "/actions/vrtk/in/triggertouch"
-            }
-          }
-        },
-        {
-          "path": "/user/hand/right/input/trigger",
-          "mode": "trigger",
-          "parameters": {},
-          "inputs": {
-            "click": {
-              "output": "/actions/vrtk/in/triggerbutton"
-            },
-            "pull": {
-              "output": "/actions/vrtk/in/triggersqueeze"
-            },
-            "touch": {
-              "output": "/actions/vrtk/in/triggertouch"
-            }
-          }
-        },
-        {
-          "path": "/user/hand/left/input/thumbstick",
-          "mode": "joystick",
-          "parameters": {},
-          "inputs": {
-            "click": {
-              "output": "/actions/vrtk/in/touchpadtwobutton"
-            },
-            "position": {
-              "output": "/actions/vrtk/in/touchpadtwoposition"
-            },
-            "touch": {
-              "output": "/actions/vrtk/in/touchpadtwotouch"
-            }
-          }
-        },
-        {
-          "path": "/user/hand/right/input/thumbstick",
-          "mode": "joystick",
-          "parameters": {},
-          "inputs": {
-            "click": {
-              "output": "/actions/vrtk/in/touchpadtwobutton"
-            },
-            "position": {
-              "output": "/actions/vrtk/in/touchpadtwoposition"
-            },
-            "touch": {
-              "output": "/actions/vrtk/in/touchpadtwotouch"
-            }
-          }
-        },
-        {
-          "path": "/user/hand/left/input/b",
-          "mode": "button",
-          "parameters": {},
-          "inputs": {
-            "click": {
-              "output": "/actions/vrtk/in/buttontwoclick"
-            },
-            "touch": {
-              "output": "/actions/vrtk/in/buttontwotouch"
-            }
-          }
-        },
-        {
-          "path": "/user/hand/right/input/b",
-          "mode": "button",
-          "parameters": {},
-          "inputs": {
-            "click": {
-              "output": "/actions/vrtk/in/buttontwoclick"
-            },
-            "touch": {
-              "output": "/actions/vrtk/in/buttontwotouch"
-            }
-          }
-        },
-        {
-          "path": "/user/hand/left/input/thumbstick",
-          "mode": "button",
-          "parameters": {},
-          "inputs": {
-            "click": {
-              "output": "/actions/vrtk/in/touchpadtwobutton"
-            },
-            "touch": {
-              "output": "/actions/vrtk/in/touchpadtwotouch"
-            }
-          }
-        },
-        {
-          "path": "/user/hand/right/input/thumbstick",
-          "mode": "button",
-          "parameters": {},
-          "inputs": {
-            "click": {
-              "output": "/actions/vrtk/in/touchpadtwobutton"
-            },
-            "touch": {
-              "output": "/actions/vrtk/in/touchpadtwotouch"
-            }
-          }
-        }
-      ],
-      "skeleton": [
-        {
-          "output": "/actions/vrtk/in/skeletonlefthand",
-          "path": "/user/hand/left/input/skeleton/left"
-        },
-        {
-          "output": "/actions/vrtk/in/skeletonrighthand",
-          "path": "/user/hand/right/input/skeleton/right"
-        }
-      ]
-    }
-  },
-  "controller_type": "knuckles",
-  "description": "",
-  "name": "knuckles_default"
+         ]
+      }
+   },
+   "controller_type" : "knuckles",
+   "description" : "",
+   "name" : "knuckles_default"
 }
