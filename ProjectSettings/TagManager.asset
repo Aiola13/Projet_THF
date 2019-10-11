@@ -6,6 +6,16 @@ TagManager:
   tags:
   - ExcludeTeleport
   - TeleportIgnore
+  - projectile
+  - FxTemporaire
+  - Saucers
+  - Arm
+  - Leg
+  - SnapCylinder
+  - Torso
+  - SnapCube
+  - Head
+  - Platform
   layers:
   - Default
   - TransparentFX

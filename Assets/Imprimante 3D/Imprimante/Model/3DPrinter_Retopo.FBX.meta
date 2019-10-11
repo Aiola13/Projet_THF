@@ -1,0 +1,578 @@
+fileFormatVersion: 2
+guid: 8c574b8c6c2fd304e81de388fa06179c
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: CTRL_Plateau
+    100004: CTRL_Systeme Verticale
+    100006: CTRL_Tete Impression
+    100008: Ecrou_gaine
+    100010: Final_MidPoly_Printer
+    100012: Gaine
+    100014: gaine_arriere
+    100016: gaine_arriere_curve1
+    100018: gaine_interieure
+    100020: gaine_joint1
+    100022: gaine_joint10
+    100024: gaine_joint11
+    100026: gaine_joint12
+    100028: gaine_joint13
+    100030: gaine_joint14
+    100032: gaine_joint15
+    100034: gaine_joint16
+    100036: gaine_joint17
+    100038: gaine_joint18
+    100040: gaine_joint19
+    100042: gaine_joint2
+    100044: gaine_joint20
+    100046: gaine_joint21
+    100048: gaine_joint22
+    100050: gaine_joint3
+    100052: gaine_joint4
+    100054: gaine_joint5
+    100056: gaine_joint6
+    100058: gaine_joint7
+    100060: gaine_joint8
+    100062: gaine_joint9
+    100064: joint1
+    100066: Mesh
+    100068: ModeleAnthoOK
+    100070: Moteur_plateau
+    100072: Passage
+    100074: passage_tete
+    100076: Plateau
+    100078: Plateau_final
+    100080: Printer
+    100082: Proto_Printer
+    100084: rondelle
+    100086: rondelle1
+    100088: System Verticale
+    100090: system_horizontal
+    100092: system_vertical
+    100094: Tete Impression
+    100096: ZERO_CTRL_Plateau
+    100098: ZERO_CTRL_Systeme Verticale
+    100100: ZERO_CTRL_Tete Impression
+    100102: Chaine
+    100104: Pinces
+    100106: Bone00
+    100108: Bone01
+    100110: Bone02
+    100112: Bone03
+    100114: Bone04
+    100116: Bone05
+    100118: Bone06
+    100120: Bone07
+    100122: Bone08
+    100124: Bone09
+    100126: Bone10
+    100128: Bone11
+    100130: Bone12
+    100132: Bone13
+    100134: Bone14
+    100136: Bone15
+    100138: Bone16
+    100140: Bone17
+    100142: Bone18
+    100144: Bone19
+    100146: Cable003
+    100148: Maillons_00
+    100150: Maillons_01
+    100152: Maillons_02
+    100154: Maillons_03
+    100156: Maillons_04
+    100158: Maillons_05
+    100160: Maillons_06
+    100162: Maillons_07
+    100164: Maillons_08
+    100166: Maillons_09
+    100168: Maillons_10
+    100170: Maillons_11
+    100172: Maillons_12
+    100174: Maillons_13
+    100176: Maillons_14
+    100178: Maillons_15
+    100180: Maillons_16
+    100182: Maillons_17
+    100184: Maillons_18
+    100186: ModeleAnthoOK001
+    100188: Pinces002
+    100190: Plateau_final001
+    100192: Systeme Verticale
+    100194: Tete Impression001
+    100196: Pince_01
+    100198: Pince_02
+    100200: Pince_03
+    100202: Pince_04
+    100204: Plateau_Detach
+    400000: //RootNode
+    400002: CTRL_Plateau
+    400004: CTRL_Systeme Verticale
+    400006: CTRL_Tete Impression
+    400008: Ecrou_gaine
+    400010: Final_MidPoly_Printer
+    400012: Gaine
+    400014: gaine_arriere
+    400016: gaine_arriere_curve1
+    400018: gaine_interieure
+    400020: gaine_joint1
+    400022: gaine_joint10
+    400024: gaine_joint11
+    400026: gaine_joint12
+    400028: gaine_joint13
+    400030: gaine_joint14
+    400032: gaine_joint15
+    400034: gaine_joint16
+    400036: gaine_joint17
+    400038: gaine_joint18
+    400040: gaine_joint19
+    400042: gaine_joint2
+    400044: gaine_joint20
+    400046: gaine_joint21
+    400048: gaine_joint22
+    400050: gaine_joint3
+    400052: gaine_joint4
+    400054: gaine_joint5
+    400056: gaine_joint6
+    400058: gaine_joint7
+    400060: gaine_joint8
+    400062: gaine_joint9
+    400064: joint1
+    400066: Mesh
+    400068: ModeleAnthoOK
+    400070: Moteur_plateau
+    400072: Passage
+    400074: passage_tete
+    400076: Plateau
+    400078: Plateau_final
+    400080: Printer
+    400082: Proto_Printer
+    400084: rondelle
+    400086: rondelle1
+    400088: System Verticale
+    400090: system_horizontal
+    400092: system_vertical
+    400094: Tete Impression
+    400096: ZERO_CTRL_Plateau
+    400098: ZERO_CTRL_Systeme Verticale
+    400100: ZERO_CTRL_Tete Impression
+    400102: Chaine
+    400104: Pinces
+    400106: Bone00
+    400108: Bone01
+    400110: Bone02
+    400112: Bone03
+    400114: Bone04
+    400116: Bone05
+    400118: Bone06
+    400120: Bone07
+    400122: Bone08
+    400124: Bone09
+    400126: Bone10
+    400128: Bone11
+    400130: Bone12
+    400132: Bone13
+    400134: Bone14
+    400136: Bone15
+    400138: Bone16
+    400140: Bone17
+    400142: Bone18
+    400144: Bone19
+    400146: Cable003
+    400148: Maillons_00
+    400150: Maillons_01
+    400152: Maillons_02
+    400154: Maillons_03
+    400156: Maillons_04
+    400158: Maillons_05
+    400160: Maillons_06
+    400162: Maillons_07
+    400164: Maillons_08
+    400166: Maillons_09
+    400168: Maillons_10
+    400170: Maillons_11
+    400172: Maillons_12
+    400174: Maillons_13
+    400176: Maillons_14
+    400178: Maillons_15
+    400180: Maillons_16
+    400182: Maillons_17
+    400184: Maillons_18
+    400186: ModeleAnthoOK001
+    400188: Pinces002
+    400190: Plateau_final001
+    400192: Systeme Verticale
+    400194: Tete Impression001
+    400196: Pince_01
+    400198: Pince_02
+    400200: Pince_03
+    400202: Pince_04
+    400204: Plateau_Detach
+    2100000: lambert1
+    2100002: Capot
+    2100004: 01 - Default
+    2100006: 'Material #2428 Slot #1'
+    2100008: 'Material #2428 Slot #4'
+    2100010: 'Material #3110'
+    2100012: Material__2428_Slot__1
+    2100014: Material__2428_Slot__4
+    2100016: 'Material #2520'
+    2100018: 'Material #3117'
+    2100020: Standardmaterial
+    2300000: gaine_arriere
+    2300002: ModeleAnthoOK
+    2300004: Moteur_plateau
+    2300006: Passage
+    2300008: passage_tete
+    2300010: Plateau
+    2300012: Plateau_final
+    2300014: rondelle
+    2300016: rondelle1
+    2300018: System Verticale
+    2300020: system_horizontal
+    2300022: system_vertical
+    2300024: Tete Impression
+    2300026: Chaine
+    2300028: gaine_interieure
+    2300030: Pinces
+    2300032: Maillons_00
+    2300034: Maillons_01
+    2300036: Maillons_02
+    2300038: Maillons_03
+    2300040: Maillons_04
+    2300042: Maillons_05
+    2300044: Maillons_06
+    2300046: Maillons_07
+    2300048: Maillons_08
+    2300050: Maillons_09
+    2300052: Maillons_10
+    2300054: Maillons_11
+    2300056: Maillons_12
+    2300058: Maillons_13
+    2300060: Maillons_14
+    2300062: Maillons_15
+    2300064: Maillons_16
+    2300066: Maillons_17
+    2300068: Maillons_18
+    2300070: ModeleAnthoOK001
+    2300072: Pinces002
+    2300074: Plateau_final001
+    2300076: Systeme Verticale
+    2300078: Tete Impression001
+    2300080: Pince_01
+    2300082: Pince_02
+    2300084: Pince_03
+    2300086: Pince_04
+    2300088: Plateau_Detach
+    3300000: gaine_arriere
+    3300002: ModeleAnthoOK
+    3300004: Moteur_plateau
+    3300006: Passage
+    3300008: passage_tete
+    3300010: Plateau
+    3300012: Plateau_final
+    3300014: rondelle
+    3300016: rondelle1
+    3300018: System Verticale
+    3300020: system_horizontal
+    3300022: system_vertical
+    3300024: Tete Impression
+    3300026: Chaine
+    3300028: gaine_interieure
+    3300030: Pinces
+    3300032: Maillons_00
+    3300034: Maillons_01
+    3300036: Maillons_02
+    3300038: Maillons_03
+    3300040: Maillons_04
+    3300042: Maillons_05
+    3300044: Maillons_06
+    3300046: Maillons_07
+    3300048: Maillons_08
+    3300050: Maillons_09
+    3300052: Maillons_10
+    3300054: Maillons_11
+    3300056: Maillons_12
+    3300058: Maillons_13
+    3300060: Maillons_14
+    3300062: Maillons_15
+    3300064: Maillons_16
+    3300066: Maillons_17
+    3300068: Maillons_18
+    3300070: ModeleAnthoOK001
+    3300072: Pinces002
+    3300074: Plateau_final001
+    3300076: Systeme Verticale
+    3300078: Tete Impression001
+    3300080: Pince_01
+    3300082: Pince_02
+    3300084: Pince_03
+    3300086: Pince_04
+    3300088: Plateau_Detach
+    4300000: Plateau
+    4300002: Moteur_plateau
+    4300004: system_vertical
+    4300006: system_horizontal
+    4300008: gaine_arriere
+    4300010: gaine_interieure
+    4300012: Passage
+    4300014: rondelle
+    4300016: rondelle1
+    4300018: Plateau_final
+    4300020: System Verticale
+    4300022: Tete Impression
+    4300024: passage_tete
+    4300026: ModeleAnthoOK
+    4300028: Chaine
+    4300030: Pinces
+    4300032: Plateau_final001
+    4300034: Pinces002
+    4300036: Systeme Verticale
+    4300038: Tete Impression001
+    4300040: ModeleAnthoOK001
+    4300042: Cable003
+    4300044: Maillons_18
+    4300046: Maillons_17
+    4300048: Maillons_16
+    4300050: Maillons_15
+    4300052: Maillons_14
+    4300054: Maillons_13
+    4300056: Maillons_12
+    4300058: Maillons_11
+    4300060: Maillons_10
+    4300062: Maillons_09
+    4300064: Maillons_08
+    4300066: Maillons_07
+    4300068: Maillons_06
+    4300070: Maillons_05
+    4300072: Maillons_04
+    4300074: Maillons_03
+    4300076: Maillons_02
+    4300078: Maillons_01
+    4300080: Maillons_00
+    4300082: Pince_01
+    4300084: Pince_03
+    4300086: Pince_04
+    4300088: Pince_02
+    4300090: Plateau_Detach
+    7400000: Starting
+    7400002: Horizontal Print
+    7400004: Vertical Steps
+    7400006: Ending
+    9500000: //RootNode
+    13700000: gaine_interieure
+    13700002: Cable003
+    2186277476908879412: ImportLogs
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 0
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Starting
+      takeName: Take 001
+      firstFrame: 0
+      lastFrame: 110
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Horizontal Print
+      takeName: Take 001
+      firstFrame: 110
+      lastFrame: 300
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events:
+      - time: 0
+        functionName: StartPrint
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Vertical Steps
+      takeName: Take 001
+      firstFrame: 300
+      lastFrame: 400
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events:
+      - time: 1
+        functionName: StopPrinting
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Ending
+      takeName: Take 001
+      firstFrame: 400
+      lastFrame: 500
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 0.01
+    hasPreviousCalculatedGlobalScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

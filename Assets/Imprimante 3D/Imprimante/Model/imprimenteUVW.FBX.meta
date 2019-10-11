@@ -1,0 +1,184 @@
+fileFormatVersion: 2
+guid: 68c56c3459135194ab667e3178b6cf8b
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: Cache_ventil_low
+    100002: Capot_autres_low
+    100004: Capot_gond_low
+    100006: Capot_grid_low
+    100008: Capot_low
+    100010: Capot_piston_bas_low
+    100012: Capot_piston_low
+    100014: Capot_support_piston_low
+    100016: Capot_ventilo_low
+    100018: charniere_low
+    100020: CharniereUp
+    100022: Ecran_low
+    100024: //RootNode
+    100026: PieceBas_low
+    100028: Porte_low
+    100030: Serrure_porte_low
+    100032: Structure
+    100034: Structure_Angle_low
+    100036: Support_divers_low
+    100038: Support_gaine_low
+    400000: Cache_ventil_low
+    400002: Capot_autres_low
+    400004: Capot_gond_low
+    400006: Capot_grid_low
+    400008: Capot_low
+    400010: Capot_piston_bas_low
+    400012: Capot_piston_low
+    400014: Capot_support_piston_low
+    400016: Capot_ventilo_low
+    400018: charniere_low
+    400020: CharniereUp
+    400022: Ecran_low
+    400024: //RootNode
+    400026: PieceBas_low
+    400028: Porte_low
+    400030: Serrure_porte_low
+    400032: Structure
+    400034: Structure_Angle_low
+    400036: Support_divers_low
+    400038: Support_gaine_low
+    2100000: 3DPrintMat
+    2300000: Cache_ventil_low
+    2300002: Capot_autres_low
+    2300004: Capot_gond_low
+    2300006: Capot_grid_low
+    2300008: Capot_piston_bas_low
+    2300010: Capot_piston_low
+    2300012: Capot_support_piston_low
+    2300014: Capot_ventilo_low
+    2300016: charniere_low
+    2300018: CharniereUp
+    2300020: Ecran_low
+    2300022: PieceBas_low
+    2300024: Serrure_porte_low
+    2300026: Structure
+    2300028: Structure_Angle_low
+    2300030: Support_divers_low
+    2300032: Support_gaine_low
+    3300000: Cache_ventil_low
+    3300002: Capot_autres_low
+    3300004: Capot_gond_low
+    3300006: Capot_grid_low
+    3300008: Capot_piston_bas_low
+    3300010: Capot_piston_low
+    3300012: Capot_support_piston_low
+    3300014: Capot_ventilo_low
+    3300016: charniere_low
+    3300018: CharniereUp
+    3300020: Ecran_low
+    3300022: PieceBas_low
+    3300024: Serrure_porte_low
+    3300026: Structure
+    3300028: Structure_Angle_low
+    3300030: Support_divers_low
+    3300032: Support_gaine_low
+    4300000: Structure
+    4300002: Capot_gond_low
+    4300004: Capot_support_piston_low
+    4300006: Support_divers_low
+    4300008: PieceBas_low
+    4300010: Structure_Angle_low
+    4300012: Cache_ventil_low
+    4300014: Ecran_low
+    4300016: CharniereUp
+    4300018: Capot_piston_bas_low
+    4300020: Capot_autres_low
+    4300022: Support_gaine_low
+    4300024: Capot_grid_low
+    4300026: Capot_ventilo_low
+    4300028: Capot_piston_low
+    4300030: charniere_low
+    4300032: Serrure_porte_low
+    2186277476908879412: ImportLogs
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
