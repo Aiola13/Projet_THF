@@ -12,6 +12,7 @@ public class PlatformManager : MonoBehaviour
         {
             Debug.Log("Bonjour");
             gameObject.GetComponent<Animator>().SetBool("Rise", true);
+
         }
     }
 
