@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3835422556834837601}
   - component: {fileID: 7351740556975982744}
   - component: {fileID: 6880667465343237552}
+  - component: {fileID: 530077023308832350}
   m_Layer: 0
   m_Name: P_SK_Socle_Lunettes_Asalog_001
   m_TagString: Untagged
@@ -98,3 +99,17 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!64 &530077023308832350
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9095713348547312708}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 1
+  m_CookingOptions: 14
+  m_Mesh: {fileID: -4214046556927477815, guid: b2e28e92e53f39c448addc8928dde0f7, type: 3}

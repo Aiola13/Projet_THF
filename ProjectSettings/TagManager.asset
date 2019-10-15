@@ -16,6 +16,7 @@ TagManager:
   - SnapCube
   - Head
   - Platform
+  - HeadSet
   layers:
   - Default
   - TransparentFX

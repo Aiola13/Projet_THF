@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7814661109159100357}
   - component: {fileID: 3215232352203347056}
   - component: {fileID: 5253661481497592694}
+  - component: {fileID: 3186227969434982919}
   m_Layer: 0
   m_Name: BG_SM_Trappe_001
   m_TagString: Untagged
@@ -111,3 +112,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89d572a70756866449b92c3a9058245d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Base: {fileID: 0}
+  prefab: {fileID: 0}
+--- !u!64 &3186227969434982919
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8381083265866320665}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_Mesh: {fileID: -629878191433612904, guid: 9c77a4d53807de049835f1b2cc4c7f4c, type: 3}
