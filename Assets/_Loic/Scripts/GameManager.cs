@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    public GameObject Arm;
+    public GameObject Base;
+    public GameObject Platform;
     // Start is called before the first frame update
     void Start()
     {
@@ -13,6 +16,16 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if(gameObject.name == GetCurrentSnappedObject().name)
+        {
+            Platform.GetComponent<Animator>().SetBool("Open", true);
+            Arm.GetComponent<Animator>().SetBool("In", true);
+        }
+    }
+
+    void LaunchScan()
+    {
+        if(Platform.tag == "PlatformBras")
+            Arm.GetComponent<Animator>().SetBool("Scan", true);
     }
 }
