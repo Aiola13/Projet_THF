@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using VRTK;
 
 public class GameManager : MonoBehaviour
 {
@@ -16,7 +17,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(gameObject.name == GetCurrentSnappedObject().name)
+        if(gameObject.name == GetComponent<VRTK_SnapDropZone>().GetCurrentSnappedObject().name)
         {
             Platform.GetComponent<Animator>().SetBool("Open", true);
             Arm.GetComponent<Animator>().SetBool("In", true);

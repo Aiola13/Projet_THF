@@ -15,7 +15,6 @@ public class PlatformManager : MonoBehaviour
         {
             Debug.Log("Bonjour");
             gameObject.GetComponent<Animator>().SetBool("Open", true);
-
         }
     }
 
