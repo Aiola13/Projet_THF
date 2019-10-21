@@ -5,28 +5,42 @@ using VRTK;
 
 public class GameManager : MonoBehaviour
 {
-    public GameObject Arm;
-    public GameObject Base;
-    public GameObject Platform;
+    protected static GameManager instance = null;
+
+    public GameObject arm;
+    public GameObject pole;
+    public GameObject platform;
+    public Transform prefab;
+    public List<GameObject> platforms = new List<GameObject>();
+    Coroutine maCoroutine;
+    
+
+    private void Awake()
+    {
+        if(instance == null)
+            instance = this;
+        else if (instance != this)
+            Destroy(this.gameObject);
+
+        DontDestroyOnLoad(this);
+    }
+
     // Start is called before the first frame update
     void Start()
     {
-    
+        //if(platform != null)
+           
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(gameObject.name == GetComponent<VRTK_SnapDropZone>().GetCurrentSnappedObject().name)
+        /*if(gameObject.name == GetComponent<VRTK_SnapDropZone>().GetCurrentSnappedObject().name)
         {
-            Platform.GetComponent<Animator>().SetBool("Open", true);
-            Arm.GetComponent<Animator>().SetBool("In", true);
-        }
+            platform.GetComponent<Animator>().SetBool("Open", true);
+            arm.GetComponent<Animator>().SetBool("In", true);
+        }*/
     }
-
-    void LaunchScan()
-    {
-        if(Platform.tag == "PlatformBras")
-            Arm.GetComponent<Animator>().SetBool("Scan", true);
-    }
+  
+    
 }

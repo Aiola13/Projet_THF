@@ -5,17 +5,17 @@ using VRTK;
 
 public class PlatformManager : MonoBehaviour
 {
-    public GameObject Base;
+    public GameObject platform;
     public Transform prefab;
+    
+
+    Coroutine maCoroutine;
 
     // Start is called before the first frame update
     void Start()
     {
-        if(gameObject.tag == "Platform")
-        {
-            Debug.Log("Bonjour");
-            gameObject.GetComponent<Animator>().SetBool("Open", true);
-        }
+        if(platform != null)
+            OpenPlatform(platform);
     }
 
     // Update is called once per frame
@@ -24,9 +24,43 @@ public class PlatformManager : MonoBehaviour
 
     }
 
-    void OpenBase()
+    void OpenPlatform(GameObject _platform)
     {
-        Instantiate(prefab, new Vector3(0.172f, 0, -2.03f), Quaternion.identity);
-        Base.GetComponent<Animator>().SetBool("In", true);
+        if(_platform.tag == "Platform")
+        {
+            Debug.Log("OpenPlatform");
+            _platform.GetComponent<Animator>().SetBool("Close", false);
+            _platform.GetComponent<Animator>().SetBool("Open", true);
+        }
     }
+
+    void OpenPole(GameObject _pole)
+    {
+        Debug.Log("OpenPole");
+        Instantiate(prefab, new Vector3(0.172f, 0, -2.03f), Quaternion.identity);
+        _pole.GetComponent<Animator>().SetBool("Out", false);
+        _pole.GetComponent<Animator>().SetBool("In", true);
+    }
+
+    void ClosePlatform(GameObject _platform)
+    {
+        if(_platform.tag == "Platform")
+        {
+            Debug.Log("ClosePlatform");
+            _platform.GetComponent<Animator>().SetBool("Open", false);
+            _platform.GetComponent<Animator>().SetBool("Close", true);
+        }
+    }
+
+    void OpenAllPlatform(GameObject[] _platform)
+    {
+       
+    }
+
+    void CloseAllPlatform(GameObject[] _platform)
+    {
+        
+    }
+
+    
 }

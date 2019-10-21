@@ -17,6 +17,7 @@ TagManager:
   - Head
   - Platform
   - HeadSet
+  - Pole
   layers:
   - Default
   - TransparentFX
