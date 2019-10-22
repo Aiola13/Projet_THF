@@ -9,6 +9,7 @@ public class AnimationManager : MonoBehaviour
     public GameObject pole;
     public GameObject platform;
     public Transform prefab;
+    public GameObject platformPole;
     public List<GameObject> platforms = new List<GameObject>();
     
     Coroutine maCoroutine;
@@ -72,8 +73,11 @@ public class AnimationManager : MonoBehaviour
     {
         Debug.Log("OpenScan");
         //if(platform.tag == "PlatformBras")
-            arm.GetComponent<Animator>().SetBool("In", true);
-            arm.GetComponent<Animator>().SetBool("Out", false);
+        maCoroutine = StartCoroutine(MaCouroutine(platformPole));
+        arm.GetComponent<Animator>().SetBool("Scan", false);
+        arm.GetComponent<Animator>().SetBool("In", true);
+        arm.GetComponent<Animator>().SetBool("Out", false);
+            
     }
 
     void LaunchScan(GameObject _arm)
@@ -96,8 +100,14 @@ public class AnimationManager : MonoBehaviour
 
     IEnumerator MaCouroutine(GameObject _go)
     {
+        _go.GetComponent<Animator>().SetBool("In", true);
+        _go.GetComponent<Animator>().SetBool("Out", false);
         yield return new WaitForSeconds(10.0f);
-        _go.GetComponent<Animator>().SetBool("In", false);
+
+
+
+
+        
         yield return null;
     }
 }
