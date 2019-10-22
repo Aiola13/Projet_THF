@@ -35,6 +35,8 @@ public class SimpleSonarShader_Mine : MonoBehaviour
 
     private Coroutine maCoroutine;
 
+    public bool scan = true;
+
     private void Start()
     {
         // Get renderers that will have effect applied to them
@@ -99,9 +101,9 @@ public class SimpleSonarShader_Mine : MonoBehaviour
 
     IEnumerator MaCouroutine()
     {
-        while (true) {
+        while (scan) {
             Debug.Log("Hello");
-            StartSonarRing(new Vector3(1, 1, 1), 100.0f / 10.0f);
+            StartSonarRing((Vector3)this.transform.localPosition + new Vector3(0, 2, 0), 100.0f / 10.0f);
             yield return new WaitForSeconds(1f);
         }
     }

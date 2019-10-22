@@ -14,17 +14,21 @@ Shader "MadeByProfessorOakie/SimpleSonarShader" {
 		_RingIntensityScale("Ring Range", float) = 1
 		_RingTex("Ring Texture", 2D) = "white" {}
 		_Cutoff ("Alpha Cutoff", Range(0,1)) = 0.5
-
+		_Transparency("Transparency", Range(0.0,1.0)) = 0.5
 	}
 		SubShader{
-		Tags{"RenderType" = "Opaque" }
+		//Tags{"RenderType" = "Opaque" }
+		Tags {"Queue"="Transparent" "RenderType"="Transparent" }
 		LOD 200
+
+		Blend SrcAlpha OneMinusSrcAlpha
 
 		CGPROGRAM
 		// Physically based Standard lighting model, and enable shadows on all light types
 //#pragma surface surf Standard fullforwardshadows
 //#pragma surface surf Lambert alpha
 #pragma surface surf Standard alphatest:_Cutoff addshadow
+#pragma surface surf Standard fullforwardshadows alpha:fade
 
 		// Use shader model 3.0 target, to get nicer looking lighting
 #pragma target 3.0
@@ -52,11 +56,16 @@ Shader "MadeByProfessorOakie/SimpleSonarShader" {
 	half _RingSpeed;
 	half _RingWidth;
 	half _RingIntensityScale;
+	//float _Cutoff;
+	float _Transparency;
 
 
 	void surf(Input IN, inout SurfaceOutputStandard o) {
 		fixed4 c = tex2D(_MainTex, IN.uv_MainTex) * _Color;
 		o.Albedo = c.rgb;
+		if(_Transparency != 0)
+			c.a = _Transparency;
+		
 
 		half DiffFromRingCol = abs(o.Albedo.r - _RingColor.r) + abs(o.Albedo.b - _RingColor.b) + abs(o.Albedo.g - _RingColor.g);
 
@@ -93,6 +102,7 @@ Shader "MadeByProfessorOakie/SimpleSonarShader" {
 		o.Metallic = _Metallic;
 		o.Smoothness = _Glossiness;
 		o.Alpha = c.a;
+		o.Albedo.rgb *= o.Alpha;
 	}
 
 	ENDCG
