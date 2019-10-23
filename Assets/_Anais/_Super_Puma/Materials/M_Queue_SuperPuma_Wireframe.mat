@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: M_Queue_SuperPuma_Wireframe
-  m_Shader: {fileID: 4800000, guid: cf65339624d9ffc46bd34050d17c8f58, type: 3}
+  m_Shader: {fileID: 4800000, guid: 4bfb1e8c9d6a5bb48ba43b94540861d6, type: 3}
   m_ShaderKeywords: _METALLICGLOSSMAP _NORMALMAP
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -70,7 +70,7 @@ Material:
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
-    - _Thickness: 18.37
+    - _Thickness: 3
     - _UVSec: 0
     - _ZWrite: 1
     m_Colors:
