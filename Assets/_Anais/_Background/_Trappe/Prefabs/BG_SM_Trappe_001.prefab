@@ -13,13 +13,13 @@ GameObject:
   - component: {fileID: 7814661109159100357}
   - component: {fileID: 3215232352203347056}
   - component: {fileID: 3186227969434982919}
-  - component: {fileID: 4644765200548190940}
+  - component: {fileID: 3687740508583334718}
   m_Layer: 0
   m_Name: BG_SM_Trappe_001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 1
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &4761658354898057482
 Transform:
@@ -34,7 +34,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: -90, z: 90}
+  m_LocalEulerAnglesHint: {x: -0.12984085, y: -90, z: 90}
 --- !u!33 &4562086725563122492
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -114,7 +114,7 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 14
   m_Mesh: {fileID: -629878191433612904, guid: 9c77a4d53807de049835f1b2cc4c7f4c, type: 3}
---- !u!114 &4644765200548190940
+--- !u!114 &3687740508583334718
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -123,12 +123,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 8381083265866320665}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 41ae0569a66044b4ab94ed9eab9cb75d, type: 3}
+  m_Script: {fileID: 11500000, guid: 0fd43f9f3ada8354cae3f3b13253714c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  arm: {fileID: 0}
-  pole: {fileID: 0}
-  platform: {fileID: 0}
-  prefab: {fileID: 0}
-  platformPole: {fileID: 0}
-  platforms: []

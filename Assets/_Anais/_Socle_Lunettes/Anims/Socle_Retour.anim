@@ -240,8 +240,8 @@ AnimationClip:
   m_HasMotionFloatCurves: 0
   m_Events:
   - time: 2.2166667
-    functionName: ClosePlatform
-    data: 
+    functionName: AlertEvents
+    data: AnimationOver
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0

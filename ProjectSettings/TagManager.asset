@@ -18,6 +18,8 @@ TagManager:
   - Platform
   - HeadSet
   - Pole
+  - PlatformPole
+  - PlatformArm
   layers:
   - Default
   - TransparentFX

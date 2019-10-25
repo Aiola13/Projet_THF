@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class Pole : MonoBehaviour
 {
-    public GameObject prefab;
+    [SerializeField] public bool animationEnded = false;
+    [SerializeField] public bool stateOpen = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -19,16 +21,26 @@ public class Pole : MonoBehaviour
 
     public void OpenPole()
     {
+
         Debug.Log("OpenPole");
-        Instantiate(prefab, new Vector3(0.172f, 0, -2.03f), Quaternion.identity);
         this.GetComponent<Animator>().SetBool("Out", false);
         this.GetComponent<Animator>().SetBool("In", true);
     }
 
-    void ClosePole()
+    public void ClosePole()
     {
         Debug.Log("ClosePole");
         this.GetComponent<Animator>().SetBool("In", false);
         this.GetComponent<Animator>().SetBool("Out", true);
+    }
+
+    void AlertEvents(string message)
+    {
+        if (message.Equals("AnimationOver"))
+        {
+            Debug.Log("Animation Over");
+            animationEnded = true;
+            stateOpen = !stateOpen;
+        } 
     }
 }

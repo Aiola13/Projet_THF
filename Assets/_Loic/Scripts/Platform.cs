@@ -5,6 +5,10 @@ using UnityEngine;
 public class Platform : MonoBehaviour
 {
     // Start is called before the first frame update
+
+    [SerializeField] public bool animationEnded = false;
+    [SerializeField] public bool stateOpen = false;
+
     void Start()
     {
         
@@ -17,17 +21,17 @@ public class Platform : MonoBehaviour
     }
 
 
-    void OpenPlatform(string _tag)
+    public void OpenPlatform(string _tag)
     {
         if(this.tag == _tag)
         {
-            Debug.Log("OpenPlatform");
+            Debug.Log("OpenPlatform" + _tag);
             this.GetComponent<Animator>().SetBool("Close", false);
             this.GetComponent<Animator>().SetBool("Open", true);
         }
     }
 
-    void ClosePlatform(string _tag)
+    public void ClosePlatform(string _tag)
     {
         if(this.tag == _tag)
         {
@@ -35,5 +39,29 @@ public class Platform : MonoBehaviour
             this.GetComponent<Animator>().SetBool("Open", false);
             this.GetComponent<Animator>().SetBool("Close", true);
         }
+    }
+
+    public IEnumerator OpenPlatformDelay(string _tag, float time)
+    {
+        if(this.tag == _tag)
+        {
+            Debug.Log("OpenPlatformDelay");
+            this.GetComponent<Animator>().SetBool("Close", false);
+            this.GetComponent<Animator>().SetBool("Open", true);
+            yield return new WaitForSeconds(time);
+        }
+
+        yield return null;
+        
+    }
+
+    void AlertEvents(string message)
+    {
+        if (message.Equals("AnimationOver"))
+        {
+            Debug.Log("Animation Over");
+            animationEnded = true;
+            stateOpen = !stateOpen;
+        } 
     }
 }

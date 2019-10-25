@@ -1376,8 +1376,8 @@ AnimationClip:
   m_HasMotionFloatCurves: 0
   m_Events:
   - time: 1.7
-    functionName: OpenPole
-    data: 
+    functionName: AlertEvents
+    data: AnimationOver
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
