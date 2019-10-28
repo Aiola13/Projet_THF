@@ -19,11 +19,15 @@ public class Platform : MonoBehaviour
     {
         
     }
-
-
     public void OpenPlatform(string _tag)
     {
-        if(this.tag == _tag)
+        if(_tag == "PlatformPrinter")
+        {
+            Debug.Log("OpenPlatform" + _tag);
+            this.GetComponent<Animator>().SetBool("CloseComplete", false);
+            this.GetComponent<Animator>().SetBool("OpenComplete", true);
+        }
+        else
         {
             Debug.Log("OpenPlatform" + _tag);
             this.GetComponent<Animator>().SetBool("Close", false);
@@ -33,14 +37,20 @@ public class Platform : MonoBehaviour
 
     public void ClosePlatform(string _tag)
     {
-        if(this.tag == _tag)
+        if(_tag == "PlatformPrinter")
+        {
+            Debug.Log("OpenPlatform" + _tag);
+            this.GetComponent<Animator>().SetBool("CloseComplete", false);
+            this.GetComponent<Animator>().SetBool("OpenComplete", true);
+        }
+        else
         {
             Debug.Log("ClosePlatform");
             this.GetComponent<Animator>().SetBool("Open", false);
             this.GetComponent<Animator>().SetBool("Close", true);
-        }
+        } 
     }
-
+    
     public IEnumerator OpenPlatformDelay(string _tag, float time)
     {
         if(this.tag == _tag)

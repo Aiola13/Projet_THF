@@ -31,7 +31,7 @@ public class Arm : MonoBehaviour
         LaunchScan();
     }
 
-    void LaunchScan()
+    public void LaunchScan()
     {
         Debug.Log("LaunchScan");
         //if(platform.tag == "PlatformBras")
@@ -40,7 +40,7 @@ public class Arm : MonoBehaviour
         this.GetComponent<Animator>().SetBool("Out", false);
     }
 
-    void CloseScan()
+    public void CloseScan()
     {
         Debug.Log("CloseScan");
         //if(platform.tag == "PlatformBras")
@@ -58,7 +58,30 @@ public class Arm : MonoBehaviour
         this.GetComponent<Animator>().SetBool("In", true);
         this.GetComponent<Animator>().SetBool("Out", false);
         yield return new WaitForSeconds(time);
-        LaunchScan();
+        //LaunchScan();
+    }
+
+    public IEnumerator LaunchScanDelay(float time)
+    {
+        yield return new WaitForSeconds(time);
+        Debug.Log("LaunchScanDelay");
+        //if(platform.tag == "PlatformBras")
+        this.GetComponent<Animator>().SetBool("Scan", true);
+        this.GetComponent<Animator>().SetBool("In", false);
+        this.GetComponent<Animator>().SetBool("Out", false);
+    }
+
+    public IEnumerator CloseScanDelay(float time)
+    {
+        yield return new WaitForSeconds(time);
+        Destroy(GameManager.instance.scanEffetInstance);
+        Debug.Log("CloseScanDelay");
+        //if(platform.tag == "PlatformBras")
+        this.GetComponent<Animator>().SetBool("In", false);
+        this.GetComponent<Animator>().SetBool("Scan", false);
+        this.GetComponent<Animator>().SetBool("Out", true);
+        yield return new WaitForSeconds(time);
+        
     }
 
 

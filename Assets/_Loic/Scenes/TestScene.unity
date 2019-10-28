@@ -22725,6 +22725,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86b0dac1a0acf934a9d76e4a71f5b36f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animationEnded: 0
+  stateOpen: 0
 --- !u!114 &541357066 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7288313007630917146, guid: d554ff32d2247a74ca1c8b04276db56b,
@@ -27755,7 +27757,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 658784676}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5aecadf57963e8c448f9d4aa13be21ad, type: 3}
+  m_Script: {fileID: 11500000, guid: f9490ee4c7baf534dac6dc32d9783907, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &660044493 stripped
@@ -60493,7 +60495,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   alert: 
+  hasRun: 1
   headSetSnapped: 0
+  QRCodeHited: 0
+  dataTransmitted: 0
   pole: {fileID: 1736989915}
   arm: {fileID: 541340227}
   platformList:
@@ -62838,6 +62843,9 @@ MonoBehaviour:
   headSetInstance: {fileID: 0}
   scanEffectPrefab: {fileID: 6412144672183831753, guid: 9af1298a13d24104e8b929d7e6b5431d,
     type: 3}
+  scanEffetInstance: {fileID: 0}
+  printerPrefab: {fileID: 4761032338483658047, guid: 03852d2fb074c1647a308745ccb82d17,
+    type: 3}
   player: {fileID: 425531463}
 --- !u!4 &1347298213
 Transform:
@@ -63950,6 +63958,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: BACKGROUND
       objectReference: {fileID: 0}
+    - target: {fileID: 6617224504907799190, guid: d554ff32d2247a74ca1c8b04276db56b,
+        type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     - target: {fileID: 2470119631369037537, guid: d554ff32d2247a74ca1c8b04276db56b,
         type: 3}
       propertyPath: m_TagString
@@ -64218,6 +64231,56 @@ PrefabInstance:
         type: 3}
       propertyPath: m_TagString
       value: PlatformArm
+      objectReference: {fileID: 0}
+    - target: {fileID: 1449307436957368518, guid: d554ff32d2247a74ca1c8b04276db56b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1449307436957368518, guid: d554ff32d2247a74ca1c8b04276db56b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 1449307436957368518, guid: d554ff32d2247a74ca1c8b04276db56b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2470119632472975622, guid: d554ff32d2247a74ca1c8b04276db56b,
+        type: 3}
+      propertyPath: m_TagString
+      value: PlatformPrinter
+      objectReference: {fileID: 0}
+    - target: {fileID: 2470119632622472277, guid: d554ff32d2247a74ca1c8b04276db56b,
+        type: 3}
+      propertyPath: m_TagString
+      value: PlatformPrinter
+      objectReference: {fileID: 0}
+    - target: {fileID: 2470119632035530882, guid: d554ff32d2247a74ca1c8b04276db56b,
+        type: 3}
+      propertyPath: m_TagString
+      value: PlatformPrinter
+      objectReference: {fileID: 0}
+    - target: {fileID: 2470119631327403036, guid: d554ff32d2247a74ca1c8b04276db56b,
+        type: 3}
+      propertyPath: m_TagString
+      value: PlatformPrinter
+      objectReference: {fileID: 0}
+    - target: {fileID: 2470119630657548947, guid: d554ff32d2247a74ca1c8b04276db56b,
+        type: 3}
+      propertyPath: m_TagString
+      value: PlatformPrinter
+      objectReference: {fileID: 0}
+    - target: {fileID: 2470119631035375880, guid: d554ff32d2247a74ca1c8b04276db56b,
+        type: 3}
+      propertyPath: m_TagString
+      value: PlatformPrinter
+      objectReference: {fileID: 0}
+    - target: {fileID: 2470119630900914546, guid: d554ff32d2247a74ca1c8b04276db56b,
+        type: 3}
+      propertyPath: m_TagString
+      value: PlatformPrinter
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d554ff32d2247a74ca1c8b04276db56b, type: 3}

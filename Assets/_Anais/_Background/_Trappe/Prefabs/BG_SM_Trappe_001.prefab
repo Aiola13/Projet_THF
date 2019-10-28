@@ -34,7 +34,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: -0.12984085, y: -90, z: 90}
+  m_LocalEulerAnglesHint: {x: 90, y: -180, z: 0}
 --- !u!33 &4562086725563122492
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -126,3 +126,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fd43f9f3ada8354cae3f3b13253714c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animationEnded: 0
+  stateOpen: 0

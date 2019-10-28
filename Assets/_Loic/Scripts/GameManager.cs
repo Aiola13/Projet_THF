@@ -9,20 +9,24 @@ public class GameManager : MonoBehaviour
 
     #region INSPECTOR FIELDS
 
-        public string alert = "";
         [SerializeField] private bool hasRun = true;
         public bool headSetSnapped = false;
+        public bool QRCodeHited = false;
+        public bool dataTransmitted = false;
 
         [Header("DEBUG")]
         [SerializeField] public Pole pole;
         [SerializeField] public Arm arm;
         [SerializeField] private List<Platform> platformList = new List<Platform>();
+        [SerializeField] private List<Platform> platformPrinter = new List<Platform>();
+        [SerializeField] private List<GameObject> printer = new List<GameObject>(); 
         [SerializeField] private Platform platformPole;
         [SerializeField] private Platform platformArm;
         [SerializeField] public GameObject headSetPrefab;
         [SerializeField] public GameObject headSetInstance;
         [SerializeField] public GameObject scanEffectPrefab;
         [SerializeField] public GameObject scanEffetInstance;
+        [SerializeField] public GameObject printerPrefab;
         [SerializeField] public GameObject player;
         
 
@@ -57,12 +61,20 @@ public class GameManager : MonoBehaviour
                 platformPole = p;
                 delay = StartCoroutine(platformPole.OpenPlatformDelay("PlatformPole", 10.0f));  
             }  
+
+            if(p.tag == "PlatformPrinter")
+            {
+                platformPrinter.Add(p);
+
+                printer.Add(Instantiate(printerPrefab, p.transform.position + new Vector3(0, -0.082f, 0), Quaternion.Euler(180, 0, 0), p.transform));
+            }
         }
     }
 
     // Update is called once per frame
     void Update()
     {
+        
         if(platformPole.stateOpen == true && pole.animationEnded == false && pole.stateOpen == false)
         {
             if(hasRun)
@@ -88,18 +100,49 @@ public class GameManager : MonoBehaviour
                 hasRun = true;
             }
 
-            if(hasRun && platformArm.stateOpen && arm.animationEnded && arm.stateOpen)
+            if(hasRun && platformArm.stateOpen && arm.animationEnded && arm.stateOpen && QRCodeHited)
             {
                 hasRun = false;
+                arm.LaunchScan();
                 scanEffetInstance = Instantiate(scanEffectPrefab, new Vector3(player.transform.localPosition.x, 1, player.transform.localPosition.z), Quaternion.identity);
+                delay = StartCoroutine(arm.CloseScanDelay(10.0f));
+            }
+
+            if(QRCodeHited && platformArm.stateOpen && arm.animationEnded && !arm.stateOpen)
+            {
+                platformPole.ClosePlatform("PlatformArm");
+
+                /* 
+                    *****************************************
+                    *****************************************
+                        Here Launch Visual Data Transmission
+                    *****************************************
+                    *****************************************
+                */
+
+                dataTransmitted = true;
             }
         }
 
+        if(dataTransmitted)
+        {
+            foreach(Platform p in platformPrinter)
+                p.OpenPlatform("PlatformPrinter");
+            
+            delay = StartCoroutine(LookAtRetard());
+        }
     }
 
-    public void GetAlertEvents(string _alert)
+    IEnumerator LookAtRetard()
     {
-        alert = _alert;
+        yield return new WaitForSeconds(3.0f);
+
+        printer.ForEach((t) => {Vector3 relativePos = player.transform.position - t.transform.position;
+            Quaternion rotation = Quaternion.LookRotation(relativePos, Vector3.up);
+            t.transform.rotation = Quaternion.RotateTowards(t.transform.rotation, rotation , 100.0f * Time.deltaTime);
+
+            t.GetComponent<VolumicVR.PrinterStand>().StartPrinting();
+        });
     }
   
     

@@ -517,6 +517,7 @@ GameObject:
   - component: {fileID: 8118567225889605030}
   - component: {fileID: 4937770931228154150}
   - component: {fileID: 2540171778041547801}
+  - component: {fileID: 7677675503245847824}
   m_Layer: 0
   m_Name: Lunettes_Asalog
   m_TagString: HeadSet
@@ -656,6 +657,32 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.2883071, y: 0.1454103, z: 0.26726884}
   m_Center: {x: -0.02635707, y: 0.022631526, z: 0.047097743}
+--- !u!114 &7677675503245847824
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5576186077735538090}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5aecadf57963e8c448f9d4aa13be21ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MyEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &7701255200340995755
 GameObject:
   m_ObjectHideFlags: 0
