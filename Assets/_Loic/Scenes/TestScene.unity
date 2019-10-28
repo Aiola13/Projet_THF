@@ -60494,7 +60494,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec2915738f0162a42991aa77223ab4df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  alert: 
   hasRun: 1
   headSetSnapped: 0
   QRCodeHited: 0
@@ -62836,6 +62835,8 @@ MonoBehaviour:
   - {fileID: 282721980}
   - {fileID: 821547028}
   - {fileID: 849682064}
+  platformPrinter: []
+  printer: []
   platformPole: {fileID: 0}
   platformArm: {fileID: 0}
   headSetPrefab: {fileID: 5576186077735538090, guid: 73b011dba1915a348af81594097d27b7,
@@ -64247,6 +64248,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1471255929045079584, guid: d554ff32d2247a74ca1c8b04276db56b,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: ad4e7d0b7e0856d4bbee40c641ce258e, type: 2}
     - target: {fileID: 2470119632472975622, guid: d554ff32d2247a74ca1c8b04276db56b,
         type: 3}
       propertyPath: m_TagString

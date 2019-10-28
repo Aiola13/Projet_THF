@@ -110,7 +110,7 @@ public class GameManager : MonoBehaviour
 
             if(QRCodeHited && platformArm.stateOpen && arm.animationEnded && !arm.stateOpen)
             {
-                platformPole.ClosePlatform("PlatformArm");
+                platformArm.ClosePlatform("PlatformArm");
 
                 /* 
                     *****************************************
