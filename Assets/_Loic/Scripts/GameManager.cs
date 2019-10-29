@@ -165,12 +165,6 @@ public class GameManager : MonoBehaviour
 
             t.GetComponent<VolumicVR.PrinterStand>().StartPrinting();
         });
-
-        /*Parallel.ForEach(printer, t => {Vector3 relativePos = player.transform.position - t.transform.position;
-            Quaternion rotation = Quaternion.LookRotation(relativePos, Vector3.up);
-            t.transform.rotation = Quaternion.RotateTowards(t.transform.rotation, rotation , 100.0f * Time.deltaTime);
-
-            t.GetComponent<VolumicVR.PrinterStand>().StartPrinting();});*/
     }
   
     
