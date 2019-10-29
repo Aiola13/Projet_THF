@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using VRTK;
+using System.Threading;
+using System.Threading.Tasks;
+
 
 public class GameManager : MonoBehaviour
 {
@@ -51,7 +54,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        foreach(Platform p in platformList)
+        /*foreach(Platform p in platformList)
         {
             if(p.tag == "PlatformArm")
                 platformArm = p;
@@ -68,7 +71,26 @@ public class GameManager : MonoBehaviour
 
                 printer.Add(Instantiate(printerPrefab, p.transform.position + new Vector3(0, -0.082f, 0), Quaternion.Euler(180, 0, 0), p.transform));
             }
-        }
+        }*/
+
+
+        Parallel.ForEach(platformList, p => {
+            if(p.tag == "PlatformArm")
+                platformArm = p;
+
+            if(p.tag == "PlatformPole")
+            {
+                platformPole = p;
+                delay = StartCoroutine(platformPole.OpenPlatformDelay("PlatformPole", 10.0f));  
+            }  
+
+            if(p.tag == "PlatformPrinter")
+            {
+                platformPrinter.Add(p);
+
+                printer.Add(Instantiate(printerPrefab, p.transform.position + new Vector3(0, -0.082f, 0), Quaternion.Euler(180, 0, 0), p.transform));
+            }
+        });
     }
 
     // Update is called once per frame
@@ -143,6 +165,12 @@ public class GameManager : MonoBehaviour
 
             t.GetComponent<VolumicVR.PrinterStand>().StartPrinting();
         });
+
+        /*Parallel.ForEach(printer, t => {Vector3 relativePos = player.transform.position - t.transform.position;
+            Quaternion rotation = Quaternion.LookRotation(relativePos, Vector3.up);
+            t.transform.rotation = Quaternion.RotateTowards(t.transform.rotation, rotation , 100.0f * Time.deltaTime);
+
+            t.GetComponent<VolumicVR.PrinterStand>().StartPrinting();});*/
     }
   
     
