@@ -54,7 +54,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        /*foreach(Platform p in platformList)
+        foreach(Platform p in platformList)
         {
             if(p.tag == "PlatformArm")
                 platformArm = p;
@@ -71,10 +71,10 @@ public class GameManager : MonoBehaviour
 
                 printer.Add(Instantiate(printerPrefab, p.transform.position + new Vector3(0, -0.082f, 0), Quaternion.Euler(180, 0, 0), p.transform));
             }
-        }*/
+        }
 
 
-        Parallel.ForEach(platformList, p => {
+        /*Parallel.ForEach(platformList, p => {
             if(p.tag == "PlatformArm")
                 platformArm = p;
 
@@ -90,7 +90,7 @@ public class GameManager : MonoBehaviour
 
                 printer.Add(Instantiate(printerPrefab, p.transform.position + new Vector3(0, -0.082f, 0), Quaternion.Euler(180, 0, 0), p.transform));
             }
-        });
+        });*/
     }
 
     // Update is called once per frame
@@ -148,6 +148,7 @@ public class GameManager : MonoBehaviour
 
         if(dataTransmitted)
         {
+            dataTransmitted = false;
             foreach(Platform p in platformPrinter)
                 p.OpenPlatform("PlatformPrinter");
             

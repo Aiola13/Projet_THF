@@ -62796,7 +62796,7 @@ MonoBehaviour:
   headSetPrefab: {fileID: 5576186077735538090, guid: 73b011dba1915a348af81594097d27b7,
     type: 3}
   headSetInstance: {fileID: 0}
-  scanEffectPrefab: {fileID: 6412144672183831753, guid: 9af1298a13d24104e8b929d7e6b5431d,
+  scanEffectPrefab: {fileID: 8778693467800229993, guid: 7443eccd998fbe74f94986e4dcb09330,
     type: 3}
   scanEffetInstance: {fileID: 0}
   printerPrefab: {fileID: 4761032338483658047, guid: 03852d2fb074c1647a308745ccb82d17,
