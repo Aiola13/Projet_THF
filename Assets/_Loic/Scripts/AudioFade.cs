@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
  
-public static class AudioFade {
+public static class AudioFade
+{
  
     public static IEnumerator FadeOut (AudioSource audioSource, float FadeTime) {
         float startVolume = audioSource.volume;
