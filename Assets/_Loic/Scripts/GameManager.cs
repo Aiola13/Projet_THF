@@ -1,9 +1,11 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using VRTK;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Linq;
 
 
 public class GameManager : MonoBehaviour
@@ -16,6 +18,7 @@ public class GameManager : MonoBehaviour
         public bool headSetSnapped = false;
         public bool QRCodeHited = false;
         public bool dataTransmitted = false;
+        public bool once = true;
 
         [Header("DEBUG")]
         [SerializeField] public Pole pole;
@@ -146,13 +149,23 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        if(dataTransmitted)
+        if(hasRun && QRCodeHited && platformArm.animationEnded && !platformArm.stateOpen && arm.animationEnded && !arm.stateOpen)
         {
-            dataTransmitted = false;
             foreach(Platform p in platformPrinter)
                 p.OpenPlatform("PlatformPrinter");
-            
+
             delay = StartCoroutine(LookAtRetard());
+
+            if(dataTransmitted)        
+            {
+                dataTransmitted = false;
+                delay = StartCoroutine(LaunchPrint());
+
+            }   
+            
+            
+            
+            
         }
     }
 
@@ -160,12 +173,21 @@ public class GameManager : MonoBehaviour
     {
         yield return new WaitForSeconds(3.0f);
 
-        printer.ForEach((t) => {Vector3 relativePos = player.transform.position - t.transform.position;
+        printer.ForEach((t) => {
+            Vector3 relativePos = player.transform.position - t.transform.position;
             Quaternion rotation = Quaternion.LookRotation(relativePos, Vector3.up);
-            t.transform.rotation = Quaternion.RotateTowards(t.transform.rotation, rotation , 100.0f * Time.deltaTime);
 
-            t.GetComponent<VolumicVR.PrinterStand>().StartPrinting();
+            t.transform.rotation = Quaternion.RotateTowards(t.transform.rotation, rotation , 500.0f * Time.deltaTime);
+            Debug.Log("I am doing this fucking rotation !!!!!!!!!!!!!");
+
         });
+    }
+
+    IEnumerator LaunchPrint()
+    {
+        yield return new WaitForSeconds(4.0f);
+        foreach(var t in printer)
+            t.GetComponent<VolumicVR.PrinterStand>().StartPrinting();
     }
   
     
