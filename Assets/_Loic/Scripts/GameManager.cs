@@ -18,14 +18,14 @@ public class GameManager : MonoBehaviour
         public bool headSetSnapped = false;
         public bool QRCodeHited = false;
         public bool dataTransmitted = false;
-        public bool once = true;
+        public bool showHelicopter = false;
 
         [Header("DEBUG")]
         [SerializeField] public Pole pole;
         [SerializeField] public Arm arm;
         [SerializeField] private List<Platform> platformList = new List<Platform>();
         [SerializeField] private List<Platform> platformPrinter = new List<Platform>();
-        [SerializeField] private List<GameObject> printer = new List<GameObject>(); 
+        [SerializeField] private List<GameObject> printerList = new List<GameObject>(); 
         [SerializeField] private Platform platformPole;
         [SerializeField] private Platform platformArm;
         [SerializeField] public GameObject headSetPrefab;
@@ -34,6 +34,8 @@ public class GameManager : MonoBehaviour
         [SerializeField] public GameObject scanEffetInstance;
         [SerializeField] public GameObject printerPrefab;
         [SerializeField] public GameObject player;
+        [SerializeField] public GameObject helicopterPrefab;
+        [SerializeField] public GameObject boxPrefab;
         
 
 
@@ -51,12 +53,8 @@ public class GameManager : MonoBehaviour
         else if (instance != this)
             Destroy(this.gameObject);
 
-        DontDestroyOnLoad(this);        
-    }
+        DontDestroyOnLoad(this);   
 
-    // Start is called before the first frame update
-    void Start()
-    {
         foreach(Platform p in platformList)
         {
             if(p.tag == "PlatformArm")
@@ -72,34 +70,14 @@ public class GameManager : MonoBehaviour
             {
                 platformPrinter.Add(p);
 
-                printer.Add(Instantiate(printerPrefab, p.transform.position + new Vector3(0, -0.082f, 0), Quaternion.Euler(180, 0, 0), p.transform));
+                printerList.Add(Instantiate(printerPrefab, p.transform.position + new Vector3(0, -0.082f, 0), Quaternion.Euler(180, 0, 0), p.transform));
             }
-        }
-
-
-        /*Parallel.ForEach(platformList, p => {
-            if(p.tag == "PlatformArm")
-                platformArm = p;
-
-            if(p.tag == "PlatformPole")
-            {
-                platformPole = p;
-                delay = StartCoroutine(platformPole.OpenPlatformDelay("PlatformPole", 10.0f));  
-            }  
-
-            if(p.tag == "PlatformPrinter")
-            {
-                platformPrinter.Add(p);
-
-                printer.Add(Instantiate(printerPrefab, p.transform.position + new Vector3(0, -0.082f, 0), Quaternion.Euler(180, 0, 0), p.transform));
-            }
-        });*/
+        }     
     }
 
     // Update is called once per frame
     void Update()
     {
-        
         if(platformPole.stateOpen == true && pole.animationEnded == false && pole.stateOpen == false)
         {
             if(hasRun)
@@ -131,11 +109,23 @@ public class GameManager : MonoBehaviour
                 arm.LaunchScan();
                 scanEffetInstance = Instantiate(scanEffectPrefab, new Vector3(player.transform.localPosition.x, 1, player.transform.localPosition.z), Quaternion.identity);
                 delay = StartCoroutine(arm.CloseScanDelay(10.0f));
+
+
+
+                printerList[0].GetComponent<VolumicVR.PrinterStand>().PrintEndedEvent += OnPrintingEnded;
+                
             }
 
             if(QRCodeHited && platformArm.stateOpen && arm.animationEnded && !arm.stateOpen)
             {
                 platformArm.ClosePlatform("PlatformArm");
+
+                //Hide Prefab to save ressources
+                arm.gameObject.SetActive(false);
+                pole.gameObject.SetActive(false);
+
+
+
 
                 /* 
                     *****************************************
@@ -163,9 +153,15 @@ public class GameManager : MonoBehaviour
 
             }   
             
-            
-            
-            
+        }
+
+
+        if(showHelicopter)
+        {
+            if(!helicopterPrefab.activeInHierarchy)
+                helicopterPrefab.SetActive(showHelicopter);         
+
+            helicopterPrefab.GetComponent<Helicopter>().HelicopterEndedEvent += LaunchMoonTag;                  
         }
     }
 
@@ -173,7 +169,7 @@ public class GameManager : MonoBehaviour
     {
         yield return new WaitForSeconds(3.0f);
 
-        printer.ForEach((t) => {
+        printerList.ForEach((t) => {
             Vector3 relativePos = player.transform.position - t.transform.position;
             Quaternion rotation = Quaternion.LookRotation(relativePos, Vector3.up);
 
@@ -186,9 +182,23 @@ public class GameManager : MonoBehaviour
     IEnumerator LaunchPrint()
     {
         yield return new WaitForSeconds(4.0f);
-        foreach(var t in printer)
+        foreach(var t in printerList)
             t.GetComponent<VolumicVR.PrinterStand>().StartPrinting();
     }
+
+    void InitialState()
+    {
+        
+    }
+
+    public void OnPrintingEnded(object o, EventArgs e)
+    {
+        printerList[0].GetComponentInChildren<Highlighter>().enabled = true;
+    }
+
+    public void LaunchMoonTag(object o,EventArgs e)
+    {
+        Debug.Log("Launch MOOOOOON TAGGGGGGGGGGGGGGGGGG");
+    }
   
-    
 }

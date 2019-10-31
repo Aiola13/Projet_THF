@@ -16,10 +16,4 @@ public class GetLocalPosition : MonoBehaviour
             Debug.Log(render[i].bounds.center);
         }
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

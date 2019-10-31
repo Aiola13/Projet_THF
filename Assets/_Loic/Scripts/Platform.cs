@@ -9,16 +9,14 @@ public class Platform : MonoBehaviour
     [SerializeField] public bool animationEnded = false;
     [SerializeField] public bool stateOpen = false;
 
-    void Start()
+    void Awake()
     {
-        
+        if(this.tag == "Untagged")
+        {
+            this.enabled = false;
+        }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
     public void OpenPlatform(string _tag)
     {
         if(_tag == "PlatformPrinter")
