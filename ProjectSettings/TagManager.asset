@@ -21,6 +21,7 @@ TagManager:
   - PlatformPole
   - PlatformArm
   - PlatformPrinter
+  - Hand
   layers:
   - Default
   - TransparentFX

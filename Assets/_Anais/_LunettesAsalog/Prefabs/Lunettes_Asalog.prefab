@@ -213,13 +213,13 @@ MonoBehaviour:
   sentences:
   - 
   - "Asalog plus de 90 projets r\xE9ussis en 20 Ans"
-  - 
-  - 
-  - 
   - "Le lyc\xE9e Jean Perrin situ\xE9 \xE0 Marseille offre \xE0 ses \xE9l\xE8ves et
     \xE9tudiants des plateaux techniques industriels innovants.  Cet \xE9tablissement
     d\u2019excellence propose des formations de tous niveaux pour les m\xE9tiers de
-    l\u2019industrie d'aujourd'hui et de demain. "
+    l\u2019industrie d'aujourd'hui et de demain."
+  - 
+  - 
+  - 
   - "Le lyc\xE9e Rouvi\xE8re situ\xE9 \xE0 Toulon a mis en place pour ses \xE9l\xE8ves
     et \xE9tudiants un FabLab d\xE9di\xE9 aux nouvelles technologies.  Cet \xE9tablissement
     propose une formation rare sur le Traitements des Mat\xE9riaux et de nombreuses
@@ -227,13 +227,13 @@ MonoBehaviour:
   sprites:
   - {fileID: 0}
   - {fileID: 21300000, guid: 2e3a5e8290ae66a4ab5cacc03f9d663f, type: 3}
-  - {fileID: 0}
+  - {fileID: 21300000, guid: 7082a4ef3144fb44f9adb27959aa4d84, type: 3}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   index: 0
-  typingSpeed: 0.1
+  typingSpeed: 0.05
 --- !u!1 &1960863705317498433
 GameObject:
   m_ObjectHideFlags: 0
@@ -1327,14 +1327,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8843837954103984824}
-  m_LocalRotation: {x: -0.76531535, y: 0.0334144, z: 0.02803801, w: 0.64217585}
+  m_LocalRotation: {x: -0.79119587, y: 0.032227363, z: 0.029394718, w: 0.6100053}
   m_LocalPosition: {x: 0.08041015, y: -0.040353086, z: 0.06595703}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 9148747123350287959}
   m_Father: {fileID: 8879355092641333177}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: -100, y: 0, z: 5}
+  m_LocalEulerAnglesHint: {x: -104.724, y: 1.621994, z: 3.4139862}
 --- !u!33 &3276729437610367067
 MeshFilter:
   m_ObjectHideFlags: 0

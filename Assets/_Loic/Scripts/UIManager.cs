@@ -19,7 +19,7 @@ public class UIManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        index = 1;
+        index = 0;
         GameManager.instance.UpdateUIEvent += NextSentence;
     }
 
@@ -27,28 +27,29 @@ public class UIManager : MonoBehaviour
 
     IEnumerator Type()
     {
-        GameManager.instance.UpdateUIEvent -= NextSentence;
+        
         foreach(char letter in sentences[index].ToCharArray())
         {
             textDisplay.text += letter;
             yield return new WaitForSeconds(typingSpeed);
         }
-        GameManager.instance.UpdateUIEvent += NextSentence;
     }
 
     public void NextSentence(object o, EventArgs e)
     {
+        GameManager.instance.UpdateUIEvent -= NextSentence;
         if(index < sentences.Length - 1)
         {
-            //index++;
+            index++;
             textDisplay.text = "";
-            StartCoroutine(Type());
             ShowImage();
+            StartCoroutine(Type());
         }
         else
         {
             textDisplay.text = "";    
         }
+        GameManager.instance.UpdateUIEvent += NextSentence;
     }
 
     public void ShowImage()

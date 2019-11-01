@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
     #region INSPECTOR FIELDS
 
         [SerializeField] private bool hasRun = true;
+        [SerializeField] private bool once = true;
         public bool headSetSnapped = false;
         public bool QRCodeHited = false;
         public bool dataTransmitted = false;
@@ -37,6 +38,8 @@ public class GameManager : MonoBehaviour
         [SerializeField] public GameObject helicopterPrefab;
         [SerializeField] public GameObject boxPrefab;
         [SerializeField] public CameraShake cameraShake;
+
+        [SerializeField] public GameObject particle;
 
         public event EventHandler UpdateUIEvent;
         
@@ -87,11 +90,17 @@ public class GameManager : MonoBehaviour
                 
             hasRun = false;
             pole.OpenPole();
-            UpdateUI();
         }
             
         if(headSetSnapped)
         {
+
+            if(once)
+            {
+                UpdateUI();
+                once = false;
+            }
+
             if(pole.stateOpen)
                 pole.ClosePole();
 
@@ -110,6 +119,7 @@ public class GameManager : MonoBehaviour
             {
                 hasRun = false;
                 arm.LaunchScan();
+                UpdateUI();
                 scanEffetInstance = Instantiate(scanEffectPrefab, new Vector3(player.transform.localPosition.x, 1, player.transform.localPosition.z), Quaternion.identity);
                 delay = StartCoroutine(arm.CloseScanDelay(10.0f));
 
@@ -128,7 +138,7 @@ public class GameManager : MonoBehaviour
                 pole.gameObject.SetActive(false);
 
 
-
+                particle.SetActive(true);
 
                 /* 
                     *****************************************
@@ -202,6 +212,7 @@ public class GameManager : MonoBehaviour
 
     public void OnPrintingEnded(object o, EventArgs e)
     {
+        particle.SetActive(true);
         printerList[0].GetComponentInChildren<Highlighter>().enabled = true;
         printerList[0].GetComponentInChildren<Highlighter>().HighLighterEndedEvent += OnHighLighterEnded;
     }
