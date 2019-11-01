@@ -17,6 +17,10 @@ public class Highlighter : MonoBehaviour
        // [SerializeField] private PrinterStand printerStand;
         private Coroutine _delay;
     #endregion
+
+    #region EVENTS
+        public event EventHandler HighLighterEndedEvent;
+    #endregion
     
 
     // Start is called before the first frame update
@@ -30,6 +34,10 @@ public class Highlighter : MonoBehaviour
 
     IEnumerator Flashing(Material material)
     {
+        BoxCollider col = this.gameObject.AddComponent<BoxCollider>();
+        col.isTrigger = true;
+        col.size = new Vector3(0.5f, 1.10f, 0.5f);
+
         while(true)
         {
             material.color = Color.white;
@@ -37,6 +45,14 @@ public class Highlighter : MonoBehaviour
             color.a = 1.0f;
             material.color = color;
             yield return new WaitForSeconds(0.5f);
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.tag == "Hand")
+        {
+            HighLighterEndedEvent?.Invoke ( this, EventArgs.Empty );
         }
     }
 }

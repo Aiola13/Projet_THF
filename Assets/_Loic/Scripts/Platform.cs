@@ -37,9 +37,9 @@ public class Platform : MonoBehaviour
     {
         if(_tag == "PlatformPrinter")
         {
-            Debug.Log("OpenPlatform" + _tag);
-            this.GetComponent<Animator>().SetBool("CloseComplete", false);
-            this.GetComponent<Animator>().SetBool("OpenComplete", true);
+            Debug.Log("ClosePlatform" + _tag);
+            this.GetComponent<Animator>().SetBool("CloseComplete", true);
+            this.GetComponent<Animator>().SetBool("OpenComplete", false);
         }
         else
         {

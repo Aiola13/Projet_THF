@@ -12,6 +12,8 @@ public class HeadSet : MonoBehaviour
     public LayerMask layerMask;
     private bool QRCodeEverHited = false;
 
+    
+
     void Awake()
     {
         layerMask = LayerMask.GetMask("Include Raycast");
@@ -35,6 +37,10 @@ public class HeadSet : MonoBehaviour
                 Debug.Log("Did not Hit");
                 //GameManager.instance.QRCodeHited = false;
             }
+
+
+
+            
         } 
     }
 }

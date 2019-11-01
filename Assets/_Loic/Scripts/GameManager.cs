@@ -36,8 +36,10 @@ public class GameManager : MonoBehaviour
         [SerializeField] public GameObject player;
         [SerializeField] public GameObject helicopterPrefab;
         [SerializeField] public GameObject boxPrefab;
-        
+        [SerializeField] public CameraShake cameraShake;
 
+        public event EventHandler UpdateUIEvent;
+        
 
         [Header("Coroutine")]
         [Tooltip("Contient ma coroutine")]
@@ -85,6 +87,7 @@ public class GameManager : MonoBehaviour
                 
             hasRun = false;
             pole.OpenPole();
+            UpdateUI();
         }
             
         if(headSetSnapped)
@@ -113,7 +116,7 @@ public class GameManager : MonoBehaviour
 
 
                 printerList[0].GetComponent<VolumicVR.PrinterStand>().PrintEndedEvent += OnPrintingEnded;
-                
+
             }
 
             if(QRCodeHited && platformArm.stateOpen && arm.animationEnded && !arm.stateOpen)
@@ -137,12 +140,14 @@ public class GameManager : MonoBehaviour
 
                 dataTransmitted = true;
             }
+
         }
 
         if(hasRun && QRCodeHited && platformArm.animationEnded && !platformArm.stateOpen && arm.animationEnded && !arm.stateOpen)
         {
             foreach(Platform p in platformPrinter)
                 p.OpenPlatform("PlatformPrinter");
+
 
             delay = StartCoroutine(LookAtRetard());
 
@@ -158,11 +163,15 @@ public class GameManager : MonoBehaviour
 
         if(showHelicopter)
         {
+
             if(!helicopterPrefab.activeInHierarchy)
                 helicopterPrefab.SetActive(showHelicopter);         
+            showHelicopter = false;
 
-            helicopterPrefab.GetComponent<Helicopter>().HelicopterEndedEvent += LaunchMoonTag;                  
+
+            helicopterPrefab.GetComponent<Helicopter>().HelicopterEndedEvent += LaunchPaint3D;                  
         }
+
     }
 
     IEnumerator LookAtRetard()
@@ -194,11 +203,42 @@ public class GameManager : MonoBehaviour
     public void OnPrintingEnded(object o, EventArgs e)
     {
         printerList[0].GetComponentInChildren<Highlighter>().enabled = true;
+        printerList[0].GetComponentInChildren<Highlighter>().HighLighterEndedEvent += OnHighLighterEnded;
     }
 
     public void LaunchMoonTag(object o,EventArgs e)
     {
+        helicopterPrefab.GetComponent<Helicopter>().HelicopterEndedEvent -= LaunchMoonTag; 
+        boxPrefab.transform.SetParent(null);
+        boxPrefab.AddComponent<Rigidbody>();
+
         Debug.Log("Launch MOOOOOON TAGGGGGGGGGGGGGGGGGG");
+
+    }
+
+    public void LaunchPaint3D(object o,EventArgs e)
+    {
+        helicopterPrefab.GetComponent<Helicopter>().LaunchTailPaint("Fade");
+        helicopterPrefab.GetComponent<Helicopter>().LaunchTailPaint("Opaque");
+    }
+
+    public void OnHighLighterEnded(object o, EventArgs e)
+    {
+        cameraShake.enabled = true;
+        foreach(Platform p in platformPrinter)
+            p.ClosePlatform("PlatformPrinter");
+
+        printerList[0].GetComponentInChildren<Highlighter>().HighLighterEndedEvent -= OnHighLighterEnded;
+
+        foreach(GameObject p in printerList)
+            p.SetActive(false);
+
+        showHelicopter = true;
+    }
+
+    public void UpdateUI()
+    {
+        UpdateUIEvent?.Invoke ( this, EventArgs.Empty );
     }
   
 }
