@@ -40650,7 +40650,7 @@ PrefabInstance:
     - target: {fileID: 6408945034949834384, guid: c17c4d44a04ee9746924af0a29d2f2ef,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6408945034949834399, guid: c17c4d44a04ee9746924af0a29d2f2ef,
         type: 3}
@@ -40816,6 +40816,46 @@ PrefabInstance:
         type: 3}
       propertyPath: m_StaticEditorFlags
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5139074773299088675, guid: c17c4d44a04ee9746924af0a29d2f2ef,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 147.64
+      objectReference: {fileID: 0}
+    - target: {fileID: 5139074773299088675, guid: c17c4d44a04ee9746924af0a29d2f2ef,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -345.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4837837119720191868, guid: c17c4d44a04ee9746924af0a29d2f2ef,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 151.483
+      objectReference: {fileID: 0}
+    - target: {fileID: 4837837119720191868, guid: c17c4d44a04ee9746924af0a29d2f2ef,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -345.35
+      objectReference: {fileID: 0}
+    - target: {fileID: 821547541364153880, guid: c17c4d44a04ee9746924af0a29d2f2ef,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 147.64
+      objectReference: {fileID: 0}
+    - target: {fileID: 821547541364153880, guid: c17c4d44a04ee9746924af0a29d2f2ef,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -345.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1277911373794011036, guid: c17c4d44a04ee9746924af0a29d2f2ef,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 147.64
+      objectReference: {fileID: 0}
+    - target: {fileID: 1277911373794011036, guid: c17c4d44a04ee9746924af0a29d2f2ef,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -345.4
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 1105340975401676330, guid: c17c4d44a04ee9746924af0a29d2f2ef, type: 3}
