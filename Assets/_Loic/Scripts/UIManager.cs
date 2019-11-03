@@ -8,13 +8,15 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
-    public TextMeshPro textDisplay;
-    public TextMeshPro hourDisplay;
+    public TextMeshProUGUI textDisplay;
+    public TextMeshProUGUI hourDisplay;
+    public TextMeshProUGUI timerDisplay;
     public Image image;
     public string[] sentences;
     public Sprite[] sprites;
     [SerializeField] private int index;
     public float typingSpeed;
+    private float gameTimer = 0f;
 
     // Start is called before the first frame update
     void Start()
@@ -57,8 +59,19 @@ public class UIManager : MonoBehaviour
         image.sprite = sprites[index];
     }
 
+    public void Timer()
+    {
+        gameTimer += Time.deltaTime;
+
+        int seconds = (int)(gameTimer % 60);
+        int minutes = (int)(gameTimer / 60) % 60;
+
+        timerDisplay.text = string.Format("{0:0}:{1:00}", minutes, seconds);
+    }
+
     void Update()
     {
-        hourDisplay.text = System.DateTime.UtcNow.ToString("dd MMMM yyyy\nHH:mm");
+        hourDisplay.text = System.DateTime.UtcNow.ToString("dd MMMM yyyy  HH:mm");
+        Timer();        
     }
 }

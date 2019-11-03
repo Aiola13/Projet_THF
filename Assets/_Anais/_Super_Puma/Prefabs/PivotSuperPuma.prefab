@@ -89,7 +89,7 @@ GameObject:
   - component: {fileID: 4551433394673673866}
   - component: {fileID: 5882813060955720688}
   m_Layer: 0
-  m_Name: P_SM_Roue_Helico_001
+  m_Name: P_SM_Chassis_Helico_001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -442,19 +442,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &2725732483626782005
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3618036371980812892}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.3881095, y: 0.32929584, z: 0.46848074}
-  m_Center: {x: 0.21070579, y: 0.006284976, z: -0.0023724884}
 --- !u!1 &2725732483820285725
 GameObject:
   m_ObjectHideFlags: 0
@@ -837,6 +824,19 @@ Transform:
   m_Father: {fileID: 5318166640103488469}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 65.833, z: 0}
+--- !u!65 &2725732483626782005
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3618036371980812892}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.3881095, y: 0.32929584, z: 0.46848074}
+  m_Center: {x: 0.21070579, y: 0.006284976, z: -0.0023724884}
 --- !u!1 &4350442307722789060
 GameObject:
   m_ObjectHideFlags: 0

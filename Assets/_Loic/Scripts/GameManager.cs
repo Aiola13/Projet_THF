@@ -42,7 +42,6 @@ public class GameManager : MonoBehaviour
         [SerializeField] public GameObject particle;
 
         public event EventHandler UpdateUIEvent;
-        
 
         [Header("Coroutine")]
         [Tooltip("Contient ma coroutine")]
