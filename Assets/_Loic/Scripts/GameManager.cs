@@ -15,7 +15,8 @@ public class GameManager : MonoBehaviour
     #region INSPECTOR FIELDS
 
         [SerializeField] private bool hasRun = true;
-        [SerializeField] private bool once = true;
+        [SerializeField] private bool updateUI = true;
+        [SerializeField] private bool showPrinter = false;
         public bool headSetSnapped = false;
         public bool QRCodeHited = false;
         public bool dataTransmitted = false;
@@ -94,23 +95,20 @@ public class GameManager : MonoBehaviour
         if(headSetSnapped)
         {
 
-            if(once)
-            {
+            if(updateUI)
                 UpdateUI();
-                once = false;
-            }
 
             if(pole.stateOpen)
                 pole.ClosePole();
 
-            if(pole.animationEnded && !pole.stateOpen)
+            if(pole.animationEnded && !pole.stateOpen && platformPole.stateOpen)
                 platformPole.ClosePlatform("PlatformPole");
 
-            if(!platformPole.stateOpen && !platformArm.stateOpen)
+            if(!platformPole.stateOpen && !platformArm.stateOpen && !platformArm.animationEnded)
             {
                 platformArm.OpenPlatform("PlatformArm");
                 delay = StartCoroutine(arm.OpenScanDelay(5.0f));
-                
+                updateUI = true;
                 hasRun = true;
             }
 
@@ -118,7 +116,7 @@ public class GameManager : MonoBehaviour
             {
                 hasRun = false;
                 arm.LaunchScan();
-                UpdateUI();
+                
                 scanEffetInstance = Instantiate(scanEffectPrefab, new Vector3(player.transform.localPosition.x, 1, player.transform.localPosition.z), Quaternion.identity);
                 delay = StartCoroutine(arm.CloseScanDelay(10.0f));
 
@@ -130,14 +128,14 @@ public class GameManager : MonoBehaviour
 
             if(QRCodeHited && platformArm.stateOpen && arm.animationEnded && !arm.stateOpen)
             {
+                particle.SetActive(true);
+                updateUI = true;
                 platformArm.ClosePlatform("PlatformArm");
 
                 //Hide Prefab to save ressources
                 arm.gameObject.SetActive(false);
                 pole.gameObject.SetActive(false);
 
-
-                particle.SetActive(true);
 
                 /* 
                     *****************************************
@@ -148,14 +146,20 @@ public class GameManager : MonoBehaviour
                 */
 
                 dataTransmitted = true;
+                showPrinter = true;
             }
 
         }
 
-        if(hasRun && QRCodeHited && platformArm.animationEnded && !platformArm.stateOpen && arm.animationEnded && !arm.stateOpen)
+        if(showPrinter && QRCodeHited && platformArm.animationEnded && !platformArm.stateOpen && arm.animationEnded && !arm.stateOpen)
         {
+            updateUI = true;
             foreach(Platform p in platformPrinter)
-                p.OpenPlatform("PlatformPrinter");
+            {
+                if(!p.stateOpen && !p.animationEnded)
+                    p.OpenPlatform("PlatformPrinter");
+            }
+                
 
 
             delay = StartCoroutine(LookAtRetard());
@@ -164,21 +168,20 @@ public class GameManager : MonoBehaviour
             {
                 dataTransmitted = false;
                 delay = StartCoroutine(LaunchPrint());
-
             }   
-            
         }
 
 
         if(showHelicopter)
         {
-
+            showPrinter = false;
             if(!helicopterPrefab.activeInHierarchy)
                 helicopterPrefab.SetActive(showHelicopter);         
-            showHelicopter = false;
+            /*showHelicopter = false;
 
-
-            helicopterPrefab.GetComponent<Helicopter>().HelicopterEndedEvent += LaunchPaint3D;                  
+            updateUI = true;
+            
+            helicopterPrefab.GetComponent<Helicopter>().HelicopterEndedEvent += LaunchPaint3D;       */           
         }
 
     }
@@ -192,9 +195,8 @@ public class GameManager : MonoBehaviour
             Quaternion rotation = Quaternion.LookRotation(relativePos, Vector3.up);
 
             t.transform.rotation = Quaternion.RotateTowards(t.transform.rotation, rotation , 500.0f * Time.deltaTime);
-            Debug.Log("I am doing this fucking rotation !!!!!!!!!!!!!");
-
         });
+        Debug.Log("I am doing this fucking rotation !!!!!!!!!!!!!");
     }
 
     IEnumerator LaunchPrint()
@@ -211,7 +213,7 @@ public class GameManager : MonoBehaviour
 
     public void OnPrintingEnded(object o, EventArgs e)
     {
-        particle.SetActive(true);
+        particle.SetActive(false);
         printerList[0].GetComponentInChildren<Highlighter>().enabled = true;
         printerList[0].GetComponentInChildren<Highlighter>().HighLighterEndedEvent += OnHighLighterEnded;
     }
@@ -249,6 +251,7 @@ public class GameManager : MonoBehaviour
     public void UpdateUI()
     {
         UpdateUIEvent?.Invoke ( this, EventArgs.Empty );
+        updateUI = false;
     }
   
 }

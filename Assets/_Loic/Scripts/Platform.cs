@@ -27,7 +27,7 @@ public class Platform : MonoBehaviour
         }
         else
         {
-            Debug.Log("OpenPlatform" + _tag);
+            Debug.Log("OpenPlatform" + this.tag);
             this.GetComponent<Animator>().SetBool("Close", false);
             this.GetComponent<Animator>().SetBool("Open", true);
         }
@@ -43,7 +43,7 @@ public class Platform : MonoBehaviour
         }
         else
         {
-            Debug.Log("ClosePlatform");
+            Debug.Log("ClosePlatform" + this.tag);
             this.GetComponent<Animator>().SetBool("Open", false);
             this.GetComponent<Animator>().SetBool("Close", true);
         } 

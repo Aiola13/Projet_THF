@@ -7,7 +7,6 @@ using System;
 public class Helicopter : MonoBehaviour
 {
     Coroutine delay;
-    [SerializeField] List<MeshRenderer> children = new List<MeshRenderer>();
     public MeshRenderer tail;
     public GameObject particle;
 
@@ -19,8 +18,7 @@ public class Helicopter : MonoBehaviour
     #endregion
 
     void Awake() {
-        //children = GetComponentsInChildren<MeshRenderer>().ToList();
-        //ChangeMaterial();
+        ChangeMaterial();
     }
 
     // Update is called once per frame
@@ -38,11 +36,8 @@ public class Helicopter : MonoBehaviour
 
     void ChangeMaterial()
     {
-        foreach(var v in children)
-        {
-            SetupMaterialWithBlendMode(v.material, "Fade");
-            SetAlpha(v.material, 0);
-        }
+        SetupMaterialWithBlendMode(tail.materials[0], "Fade");
+        SetAlpha(tail.materials[0], 0);
     }
 
 
@@ -136,7 +131,7 @@ public class Helicopter : MonoBehaviour
 
     public void OnAnimationEnded()
     {
-        HelicopterEndedEvent?.Invoke ( this, EventArgs.Empty );
+        //HelicopterEndedEvent?.Invoke ( this, EventArgs.Empty );
         Debug.Log("Animation Helico Fini");
     }
 
