@@ -12,8 +12,11 @@ public class UIManager : MonoBehaviour
     public TextMeshProUGUI hourDisplay;
     public TextMeshProUGUI timerDisplay;
     public Image image;
+    public Image logo;
+    public string[] sentencesMain;
     public string[] sentences;
     public Sprite[] sprites;
+    public Sprite[] logos;
     [SerializeField] private int index;
     public float typingSpeed;
     private float gameTimer = 0f;
@@ -29,7 +32,6 @@ public class UIManager : MonoBehaviour
 
     IEnumerator Type()
     {
-        
         foreach(char letter in sentences[index].ToCharArray())
         {
             textDisplay.text += letter;
@@ -57,6 +59,7 @@ public class UIManager : MonoBehaviour
     public void ShowImage()
     {
         image.sprite = sprites[index];
+        logo.sprite = logos[index];
     }
 
     public void Timer()
