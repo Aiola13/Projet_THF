@@ -1565,7 +1565,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7205552103949613995}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 84d0236eb44f44641be819af78373aea, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -2130,17 +2130,17 @@ PrefabInstance:
     - target: {fileID: 1944177865770841702, guid: 583e9d13ff4fc234299724a809a44e4a,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -14.124027
+      value: -14.051
       objectReference: {fileID: 0}
     - target: {fileID: 1944177865770841702, guid: 583e9d13ff4fc234299724a809a44e4a,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4.163
+      value: 4.06
       objectReference: {fileID: 0}
     - target: {fileID: 1944177865770841702, guid: 583e9d13ff4fc234299724a809a44e4a,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 43.746017
+      value: 43.778
       objectReference: {fileID: 0}
     - target: {fileID: 1944177865770841702, guid: 583e9d13ff4fc234299724a809a44e4a,
         type: 3}
@@ -2185,17 +2185,17 @@ PrefabInstance:
     - target: {fileID: 1944177865770841702, guid: 583e9d13ff4fc234299724a809a44e4a,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 2.5000043
+      value: 2.876505
       objectReference: {fileID: 0}
     - target: {fileID: 1944177865770841702, guid: 583e9d13ff4fc234299724a809a44e4a,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 2.5
+      value: 2.8765
       objectReference: {fileID: 0}
     - target: {fileID: 1944177865770841702, guid: 583e9d13ff4fc234299724a809a44e4a,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 2.5000043
+      value: 2.876505
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 583e9d13ff4fc234299724a809a44e4a, type: 3}

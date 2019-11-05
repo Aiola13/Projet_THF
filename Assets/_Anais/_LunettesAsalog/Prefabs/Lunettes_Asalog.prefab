@@ -213,12 +213,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 048cc173b95eda44e8ea192ea22d19b9, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -462,23 +462,23 @@ MonoBehaviour:
   - EXPIRIS
   - EDITAG
   sprites:
-  - {fileID: 0}
-  - {fileID: 21300000, guid: 2e3a5e8290ae66a4ab5cacc03f9d663f, type: 3}
-  - {fileID: 21300000, guid: 7082a4ef3144fb44f9adb27959aa4d84, type: 3}
+  - {fileID: 21300000, guid: 048cc173b95eda44e8ea192ea22d19b9, type: 3}
+  - {fileID: 21300000, guid: b47ac426efe8b8a43b6294ddd7db3d07, type: 3}
+  - {fileID: 21300000, guid: eaedca985aa2a594fa6b54e77e06650c, type: 3}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   logos:
-  - {fileID: 21300000, guid: 1d0529040d6d3004ea02c623938b6a8d, type: 3}
-  - {fileID: 21300000, guid: eaedca985aa2a594fa6b54e77e06650c, type: 3}
-  - {fileID: 21300000, guid: 6d0f6a2e2c8f59d4a85d598ee9b103e0, type: 3}
-  - {fileID: 21300000, guid: 58d0a53d1e353b445beedc960f51e2f6, type: 3}
-  - {fileID: 21300000, guid: 547e2915a6f03b943a260d6f98d93b4b, type: 3}
+  - {fileID: 21300000, guid: 048cc173b95eda44e8ea192ea22d19b9, type: 3}
+  - {fileID: 21300000, guid: 3918765afde70a44c8dcbddf38e48095, type: 3}
+  - {fileID: 21300000, guid: 34d3beaf87824b24ebfc7a52d9bcf106, type: 3}
   - {fileID: 0}
-  - {fileID: 21300000, guid: f406de96cd713384a8c94df894f6ed0e, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   index: 0
-  typingSpeed: 0.05
+  typingSpeed: 0.005
 --- !u!1 &1960863705317498433
 GameObject:
   m_ObjectHideFlags: 0
@@ -1271,10 +1271,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Le lyc\xE9e Jean Perrin situ\xE9 \xE0 Marseille offre \xE0 ses \xE9l\xE8ves
-    et \xE9tudiants des plateaux techniques industriels innovants.  Cet \xE9tablissement
-    d\u2019excellence propose des formations de tous niveaux pour les m\xE9tiers de
-    l\u2019industrie d'aujourd'hui et de demain."
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1343,13 +1340,13 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 7708340082544438813}
-    characterCount: 248
+    characterCount: 0
     spriteCount: 0
-    spaceCount: 36
-    wordCount: 36
+    spaceCount: 0
+    wordCount: 0
     linkCount: 0
-    lineCount: 8
-    pageCount: 1
+    lineCount: 0
+    pageCount: 0
     materialCount: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
@@ -1517,12 +1514,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 048cc173b95eda44e8ea192ea22d19b9, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

@@ -14,6 +14,7 @@ public class Helicopter : MonoBehaviour
     #region EVENTS
 
 		public event EventHandler HelicopterEndedEvent;
+        public event EventHandler PaintEndedEvent;
 
     #endregion
 
@@ -25,13 +26,6 @@ public class Helicopter : MonoBehaviour
     void Update()
     {
         AudioFade.FadeIn(this.GetComponent<AudioSource>(), 3.0f);
-        
-        /*foreach(var v in children)
-        {
-            delay = StartCoroutine(SetAlphaOverTime(v.material));
-        }*/
-
-
     }
 
     void ChangeMaterial()
@@ -127,11 +121,17 @@ public class Helicopter : MonoBehaviour
                 }
             break;
         }
+
+        yield return new WaitForSeconds(5.0f);
+        if(particle.activeInHierarchy)
+            particle.SetActive(false);
+
+        PaintEndedEvent?.Invoke ( this, EventArgs.Empty );
     }
 
     public void OnAnimationEnded()
     {
-        //HelicopterEndedEvent?.Invoke ( this, EventArgs.Empty );
+        HelicopterEndedEvent?.Invoke ( this, EventArgs.Empty );
         Debug.Log("Animation Helico Fini");
     }
 
@@ -142,5 +142,8 @@ public class Helicopter : MonoBehaviour
             particle.SetActive(true);
         }
         delay = StartCoroutine(SetAlphaOverTime(tail.materials[0], blendMode));
+        Color color = tail.materials[1].color;
+        color.a = 0f;
+        tail.materials[1].color = color;
     }
 }
