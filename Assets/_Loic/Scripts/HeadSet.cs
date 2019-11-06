@@ -11,6 +11,7 @@ public class HeadSet : MonoBehaviour
     RaycastHit hit;
     public LayerMask layerMask;
     private bool QRCodeEverHited = false;
+    public GameObject UI;
 
     
 

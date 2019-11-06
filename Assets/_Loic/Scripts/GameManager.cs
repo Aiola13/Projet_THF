@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using VRTK;
 using System.Threading;
 using System.Threading.Tasks;
@@ -90,6 +91,7 @@ public class GameManager : MonoBehaviour
             if(hasRun)
                 headSetInstance = Instantiate(headSetPrefab, new Vector3(0.172f, 0, -2.03f), Quaternion.identity);
                 
+                
             hasRun = false;
             pole.OpenPole();
 
@@ -99,6 +101,8 @@ public class GameManager : MonoBehaviour
             
         if(headSetSnapped)
         {
+            if(!headSetInstance.GetComponent<HeadSet>().UI.activeInHierarchy)
+                headSetInstance.GetComponent<HeadSet>().UI.SetActive(true);
 
             if(updateUI)
                 StartCoroutine(UpdateUI());
