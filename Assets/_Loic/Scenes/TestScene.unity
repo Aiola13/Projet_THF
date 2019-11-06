@@ -27740,7 +27740,7 @@ MonoBehaviour:
   scanEffectPrefab: {fileID: 8778693467800229993, guid: 7443eccd998fbe74f94986e4dcb09330,
     type: 3}
   scanEffetInstance: {fileID: 0}
-  printerPrefab: {fileID: 4761032338483658047, guid: 03852d2fb074c1647a308745ccb82d17,
+  printerPrefab: {fileID: 5634500399313065935, guid: 66056cfba0022b546a57cb4dca7c9f56,
     type: 3}
   player: {fileID: 425531463}
   helicopterPrefab: {fileID: 866791447}

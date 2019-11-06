@@ -76,7 +76,8 @@ public class GameManager : MonoBehaviour
             {
                 platformPrinter.Add(p);
 
-                printerList.Add(Instantiate(printerPrefab, p.transform.position + new Vector3(0, -0.082f, 0), Quaternion.Euler(180, 0, 0), p.transform));
+                //printerList.Add(Instantiate(printerPrefab, p.transform.position + new Vector3(0, -0.082f, 0), Quaternion.Euler(180, 0, 0), p.transform));
+                printerList.Add(Instantiate(printerPrefab, p.transform.position + new Vector3(0, -0.077f, 0), Quaternion.Euler(90, 0, 0), p.transform));
             }
         }     
     }
@@ -91,6 +92,9 @@ public class GameManager : MonoBehaviour
                 
             hasRun = false;
             pole.OpenPole();
+
+
+            StartCoroutine(LookAtRetardArm());
         }
             
         if(headSetSnapped)
@@ -119,12 +123,12 @@ public class GameManager : MonoBehaviour
                 hasRun = false;
                 arm.LaunchScan();
                 
-                scanEffetInstance = Instantiate(scanEffectPrefab, new Vector3(player.transform.localPosition.x, 1, player.transform.localPosition.z), Quaternion.identity);
+                scanEffetInstance = Instantiate(scanEffectPrefab, new Vector3(player.transform.position.x, 1, player.transform.position.z), Quaternion.identity);
                 delay = StartCoroutine(arm.CloseScanDelay(10.0f));
 
 
 
-                printerList[0].GetComponent<VolumicVR.PrinterStand>().PrintEndedEvent += OnPrintingEnded;
+                printerList[0].transform.GetChild(0).gameObject.GetComponent<VolumicVR.PrinterStand>().PrintEndedEvent += OnPrintingEnded;
                 if(doUpdateUI)
                 {
                     doUpdateUI = false;
@@ -171,7 +175,6 @@ public class GameManager : MonoBehaviour
             }
                 
 
-
             delay = StartCoroutine(LookAtRetard());
 
             if(dataTransmitted)        
@@ -203,10 +206,13 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(3.0f);
 
         printerList.ForEach((t) => {
-            Vector3 relativePos = player.transform.position - t.transform.position;
-            Quaternion rotation = Quaternion.LookRotation(relativePos, Vector3.up);
+            var relativePos = player.transform.position - t.transform.GetChild(0).gameObject.transform.position;
+            // Only rotation on y axis
+            relativePos.y = 0;
 
-            t.transform.rotation = Quaternion.RotateTowards(t.transform.rotation, rotation , 500.0f * Time.deltaTime);
+            Quaternion rotation = Quaternion.LookRotation(relativePos, Vector3.up);
+           
+            t.transform.GetChild(0).gameObject.transform.rotation = Quaternion.RotateTowards(t.transform.GetChild(0).gameObject.transform.rotation, rotation, 500.0f * Time.deltaTime);
         });
         Debug.Log("I am doing this fucking rotation !!!!!!!!!!!!!");
     }
@@ -215,7 +221,7 @@ public class GameManager : MonoBehaviour
     {
         yield return new WaitForSeconds(4.0f);
         foreach(var t in printerList)
-            t.GetComponent<VolumicVR.PrinterStand>().StartPrinting();
+            t.transform.GetChild(0).gameObject.GetComponent<VolumicVR.PrinterStand>().StartPrinting();
     }
 
     void InitialState()
@@ -259,7 +265,7 @@ public class GameManager : MonoBehaviour
         foreach(Platform p in platformPrinter)
             p.ClosePlatform("PlatformPrinter");
 
-        printerList[0].GetComponentInChildren<Highlighter>().HighLighterEndedEvent -= OnHighLighterEnded;
+        printerList[0].transform.GetChild(0).gameObject.GetComponentInChildren<Highlighter>().HighLighterEndedEvent -= OnHighLighterEnded;
 
         foreach(GameObject p in printerList)
             p.SetActive(false);
@@ -278,6 +284,23 @@ public class GameManager : MonoBehaviour
         updateUI = false;
         yield return new WaitForSeconds(1.5f);
         UpdateUIEvent?.Invoke ( this, EventArgs.Empty );  
+    }
+
+
+
+
+
+    IEnumerator LookAtRetardArm()
+    {
+        yield return new WaitForSeconds(10.0f);
+
+        var relativePos = arm.transform.position - player.transform.position;
+        // Only rotation on y axis
+        relativePos.y = 0;
+
+        Quaternion rotation = Quaternion.LookRotation(relativePos, Vector3.up);
+        
+        arm.transform.rotation = Quaternion.RotateTowards(arm.transform.rotation, rotation, 500.0f * Time.deltaTime);
     }
   
 }
