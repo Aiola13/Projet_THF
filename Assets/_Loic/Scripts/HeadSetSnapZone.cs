@@ -10,7 +10,7 @@ public class HeadSetSnapZone : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKey(KeyCode.Space) && !GetComponent<VRTK_SnapDropZone>().GetCurrentSnappedObject())
+        if(Input.GetKey(KeyCode.Space) || !GetComponent<VRTK_SnapDropZone>().GetCurrentSnappedObject())
         {
             hasRun = false;
             this.gameObject.GetComponent<VRTK_SnapDropZone>().ForceSnap(GameManager.instance.headSetInstance);
