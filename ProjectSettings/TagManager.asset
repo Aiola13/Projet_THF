@@ -22,6 +22,11 @@ TagManager:
   - PlatformArm
   - PlatformPrinter
   - Hand
+  - Printer
+  - Helicoptere
+  - Data
+  - Box
+  - QR
   layers:
   - Default
   - TransparentFX

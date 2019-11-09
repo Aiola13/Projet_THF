@@ -27,6 +27,7 @@ public class GameManager : MonoBehaviour
         [Header("DEBUG")]
         [SerializeField] public Pole pole;
         [SerializeField] public Arm arm;
+        [SerializeField] public Dome dome;
         [SerializeField] private List<Platform> platformList = new List<Platform>();
         [SerializeField] private List<Platform> platformPrinter = new List<Platform>();
         [SerializeField] private List<GameObject> printerList = new List<GameObject>(); 
@@ -41,9 +42,6 @@ public class GameManager : MonoBehaviour
         [SerializeField] public GameObject helicopterPrefab;
         [SerializeField] public GameObject boxPrefab;
         [SerializeField] public CameraShake cameraShake;
-
-        [SerializeField] public GameObject particle;
-
         public event EventHandler UpdateUIEvent;
 
         [Header("Coroutine")]
@@ -104,8 +102,8 @@ public class GameManager : MonoBehaviour
             if(!headSetInstance.GetComponent<HeadSet>().UI.activeInHierarchy)
                 headSetInstance.GetComponent<HeadSet>().UI.SetActive(true);
 
-            if(updateUI)
-                StartCoroutine(UpdateUI());
+            /*if(updateUI)
+                StartCoroutine(UpdateUI());*/
 
             if(pole.stateOpen)
                 pole.ClosePole();
@@ -132,36 +130,25 @@ public class GameManager : MonoBehaviour
 
 
 
-                printerList[0].transform.GetChild(0).gameObject.GetComponent<VolumicVR.PrinterStand>().PrintEndedEvent += OnPrintingEnded;
+                printerList[0].transform.GetChild(3).gameObject.GetComponent<VolumicVR.PrinterStand>().PrintEndedEvent += OnPrintingEnded;
                 if(doUpdateUI)
                 {
                     doUpdateUI = false;
                     updateUI = true;
                 }
                     
+                dome.StartSubCourotine();
 
             }
 
             if(!hasRun && QRCodeHited && platformArm.stateOpen && arm.animationEnded && !arm.stateOpen)
             {
-                particle.SetActive(true);
-
-               
 
                 platformArm.ClosePlatform("PlatformArm");
 
                 //Hide Prefab to save ressources
                 arm.gameObject.SetActive(false);
                 pole.gameObject.SetActive(false);
-
-
-                /* 
-                    *****************************************
-                    *****************************************
-                        Here Launch Visual Data Transmission
-                    *****************************************
-                    *****************************************
-                */
 
                 dataTransmitted = true;
                 showPrinter = true;
@@ -177,6 +164,7 @@ public class GameManager : MonoBehaviour
                 if(!p.stateOpen && !p.animationEnded)
                     p.OpenPlatform("PlatformPrinter");
             }
+            dome.StopSubCourotine();
                 
 
             delay = StartCoroutine(LookAtRetard());
@@ -210,22 +198,22 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(3.0f);
 
         printerList.ForEach((t) => {
-            var relativePos = player.transform.position - t.transform.GetChild(0).gameObject.transform.position;
+            var relativePos = player.transform.position - t.transform.GetChild(3).gameObject.transform.position;
             // Only rotation on y axis
             relativePos.y = 0;
 
             Quaternion rotation = Quaternion.LookRotation(relativePos, Vector3.up);
            
-            t.transform.GetChild(0).gameObject.transform.rotation = Quaternion.RotateTowards(t.transform.GetChild(0).gameObject.transform.rotation, rotation, 500.0f * Time.deltaTime);
+            t.transform.GetChild(3).gameObject.transform.rotation = Quaternion.RotateTowards(t.transform.GetChild(3).gameObject.transform.rotation, rotation, 500.0f * Time.deltaTime);
         });
         Debug.Log("I am doing this fucking rotation !!!!!!!!!!!!!");
     }
 
     IEnumerator LaunchPrint()
     {
-        yield return new WaitForSeconds(4.0f);
+        yield return new WaitForSeconds(5.0f);
         foreach(var t in printerList)
-            t.transform.GetChild(0).gameObject.GetComponent<VolumicVR.PrinterStand>().StartPrinting();
+            t.transform.GetChild(3).gameObject.GetComponent<VolumicVR.PrinterStand>().StartPrinting();
     }
 
     void InitialState()
@@ -235,10 +223,6 @@ public class GameManager : MonoBehaviour
 
     public void OnPrintingEnded(object o, EventArgs e)
     {
-        particle.SetActive(false);
-        /*printerList[0].GetComponentInChildren<Highlighter>().enabled = true;
-        printerList[0].GetComponentInChildren<Highlighter>().HighLighterEndedEvent += OnHighLighterEnded;*/
-
         foreach(GameObject go in printerList)
         {
             go.GetComponentInChildren<Highlighter>().enabled = true;
@@ -269,7 +253,7 @@ public class GameManager : MonoBehaviour
         foreach(Platform p in platformPrinter)
             p.ClosePlatform("PlatformPrinter");
 
-        printerList[0].transform.GetChild(0).gameObject.GetComponentInChildren<Highlighter>().HighLighterEndedEvent -= OnHighLighterEnded;
+        printerList[0].transform.GetChild(3).gameObject.GetComponentInChildren<Highlighter>().HighLighterEndedEvent -= OnHighLighterEnded;
 
         foreach(GameObject p in printerList)
             p.SetActive(false);
@@ -289,9 +273,6 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(1.5f);
         UpdateUIEvent?.Invoke ( this, EventArgs.Empty );  
     }
-
-
-
 
 
     IEnumerator LookAtRetardArm()

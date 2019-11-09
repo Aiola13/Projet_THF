@@ -586,9 +586,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _printer: {fileID: 361987602814834992}
   _printSpot: {fileID: 414205796}
-  objectToPrint: 2
-  _timeMultiplier: 1
-  _chat: {fileID: 6046635349223844136, guid: 97daf63d28298a247be0f4236a51b549, type: 3}
+  objectToPrint: 1
+  _timeMultiplier: 57.1
+  _chat: {fileID: 5984314484535657497, guid: 48ffec16ad79e64448bec0e5cf94a888, type: 3}
   _moai: {fileID: 423911417085927919, guid: 956e9f270af9b1b419ba00844b959975, type: 3}
   _octoStylo: {fileID: 7761462437697297801, guid: e437ad30d290ffa48acac5a7933c01d7,
     type: 3}
@@ -902,6 +902,30 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: e1bba837ce62f4348b94c60bdc183e7a, type: 2}
+    - target: {fileID: 400186, guid: 8c574b8c6c2fd304e81de388fa06179c, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.70704716
+      objectReference: {fileID: 0}
+    - target: {fileID: 400186, guid: 8c574b8c6c2fd304e81de388fa06179c, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.009181657
+      objectReference: {fileID: 0}
+    - target: {fileID: 400186, guid: 8c574b8c6c2fd304e81de388fa06179c, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.009181654
+      objectReference: {fileID: 0}
+    - target: {fileID: 400186, guid: 8c574b8c6c2fd304e81de388fa06179c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.70704716
+      objectReference: {fileID: 0}
+    - target: {fileID: 400186, guid: 8c574b8c6c2fd304e81de388fa06179c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -90.00001
+      objectReference: {fileID: 0}
+    - target: {fileID: 400186, guid: 8c574b8c6c2fd304e81de388fa06179c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -1.488
+      objectReference: {fileID: 0}
     - target: {fileID: 400096, guid: 8c574b8c6c2fd304e81de388fa06179c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: -90

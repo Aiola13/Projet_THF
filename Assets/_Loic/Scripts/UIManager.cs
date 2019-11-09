@@ -13,19 +13,20 @@ public class UIManager : MonoBehaviour
     public TextMeshProUGUI timerDisplay;
     public Image image;
     public Image logo;
-    public string[] sentencesMain;
     public string[] sentences;
     public Sprite[] sprites;
     public Sprite[] logos;
     [SerializeField] private int index;
     public float typingSpeed;
     private float gameTimer = 0f;
+    private Coroutine delay;
 
     // Start is called before the first frame update
     void Start()
     {
         index = 0;
-        GameManager.instance.UpdateUIEvent += NextSentence;
+        //GameManager.instance.UpdateUIEvent += NextSentence;
+        this.GetComponentInParent<HeadSet>().HitEvent += NextSentence;
     }
 
 
@@ -39,10 +40,10 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    public void NextSentence(object o, EventArgs e)
+    private void NextSentence(object o, int i)
     {
-        GameManager.instance.UpdateUIEvent -= NextSentence;
-        if(index < sentences.Length - 1)
+        //GameManager.instance.UpdateUIEvent -= NextSentence;
+       /*if(index < sentences.Length - 1)
         {
             index++;
             textDisplay.text = "";
@@ -52,8 +53,29 @@ public class UIManager : MonoBehaviour
         else
         {
             textDisplay.text = "";    
+        }*/
+        //GameManager.instance.UpdateUIEvent += NextSentence;
+        if(i > 0 && i < 7)
+        {
+            //StopCoroutine(delay);
+            index = 0;
+            textDisplay.text = "";
+            index = i;
+            ShowImage();
+            textDisplay.text = sentences[i];
+            //delay = StartCoroutine(Type());
+            //StopCoroutine(delay);
         }
-        GameManager.instance.UpdateUIEvent += NextSentence;
+        else
+        {
+            
+            StopCoroutine(delay);
+            index = 0;
+            textDisplay.text = "";    
+        }
+            
+
+        
     }
 
     public void ShowImage()
