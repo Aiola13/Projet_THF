@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 using System;
+using UnityEngine.UI;
 
 public class Helicopter : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class Helicopter : MonoBehaviour
     public MeshRenderer tail;
     public GameObject particle;
 
+    public List<Image> image = new List<Image>();
 
     #region EVENTS
 
@@ -122,10 +124,18 @@ public class Helicopter : MonoBehaviour
             break;
         }
 
-        yield return new WaitForSeconds(5.0f);
+        yield return new WaitForSeconds(10.0f);
         if(particle.activeInHierarchy)
             particle.SetActive(false);
 
+        foreach(var i in image)
+        {
+            Color c = i.color;
+            c.a = Mathf.Lerp( 1f, 0f, 50.0f * Time.deltaTime);
+            i.color = c;
+            Debug.Log("Je modifie la transparence !!!!!!");
+        }
+        
         PaintEndedEvent?.Invoke ( this, EventArgs.Empty );
     }
 
@@ -140,6 +150,13 @@ public class Helicopter : MonoBehaviour
         if(blendMode == "Opaque")
         {
             particle.SetActive(true);
+            foreach(var i in image)
+            {
+                Color c = i.color;
+                c.a = Mathf.Lerp( 0f, 1f, 50.0f * Time.deltaTime);
+                i.color = c;
+                Debug.Log("Je modifie la transparence !!!!!!");
+            }
         }
         delay = StartCoroutine(SetAlphaOverTime(tail.materials[0], blendMode));
         Color color = tail.materials[1].color;

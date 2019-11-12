@@ -8,18 +8,21 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
+    //public event EventHandler EndingEvent;
     public TextMeshProUGUI textDisplay;
     public TextMeshProUGUI hourDisplay;
     public TextMeshProUGUI timerDisplay;
     public Image image;
     public Image logo;
+    public Image wifi;
     public string[] sentences;
     public Sprite[] sprites;
     public Sprite[] logos;
     [SerializeField] private int index;
     public float typingSpeed;
-    private float gameTimer = 0f;
+    [SerializeField] private float gameTimer = 0f;
     private Coroutine delay;
+    public GameObject box;
 
     // Start is called before the first frame update
     void Start()
@@ -27,6 +30,8 @@ public class UIManager : MonoBehaviour
         index = 0;
         //GameManager.instance.UpdateUIEvent += NextSentence;
         this.GetComponentInParent<HeadSet>().HitEvent += NextSentence;
+        box = GameManager.instance.boxPrefab;
+        box.GetComponent<Box>().WifiEvent += LaunchWifiIcon;
     }
 
 
@@ -69,7 +74,7 @@ public class UIManager : MonoBehaviour
         else
         {
             
-            StopCoroutine(delay);
+            //StopCoroutine(delay);
             index = 0;
             textDisplay.text = "";    
         }
@@ -96,7 +101,24 @@ public class UIManager : MonoBehaviour
 
     void Update()
     {
-        hourDisplay.text = System.DateTime.UtcNow.ToString("dd MMMM yyyy  HH:mm");
-        Timer();        
+        hourDisplay.text = System.DateTime.Now.ToString("dd MMMM yyyy  HH:mm");
+        Timer();     
+
+        /*if(gameTimer >= 360f)
+        {
+            EndingEvent();
+        }*/
     }
+
+    
+    public void LaunchWifiIcon(object o,EventArgs e)
+    {
+        wifi.gameObject.SetActive(true);
+    }
+
+    public void EndingEvent()
+    {
+
+    }
+
 }

@@ -7,6 +7,7 @@ public class Dome : MonoBehaviour
     public Material materialTransparent;
     public Material materialData;
     public MeshRenderer render;
+    [SerializeField] public AudioSource sound;
 
 
 
@@ -16,19 +17,6 @@ public class Dome : MonoBehaviour
 
     // starting value for the Lerp
     static float t = 0.0f;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        //render.material = materialData;
-        //StartCoroutine(DataTransfered());
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     IEnumerator DataTransfered()
     {
@@ -56,6 +44,8 @@ public class Dome : MonoBehaviour
 
     public void StartSubCourotine()
     {
+        sound.Play();
+
         render.material = materialData;
         StartCoroutine(SetAlphaOverTime(render.material, "Opaque"));
         StartCoroutine(DataTransfered());
@@ -63,9 +53,11 @@ public class Dome : MonoBehaviour
 
     public void StopSubCourotine()
     {
-        StartCoroutine(SetAlphaOverTime(render.material, "Fade"));
+        sound.enabled = false;
         StopCoroutine(DataTransfered());
         render.material = materialTransparent;
+        StartCoroutine(SetAlphaOverTime(render.material, "Fade"));
+        
         
     }
 
@@ -75,6 +67,8 @@ public class Dome : MonoBehaviour
         switch (blendMode)
         {
             case "Opaque":
+                render.gameObject.layer = 9;
+                render.tag = "Data";
                 for(float f = 0.05f; f <= 1; f+= 0.1f)
                 {
                     Color color = material.color;
@@ -85,6 +79,8 @@ public class Dome : MonoBehaviour
                 }
             break;
             case "Fade":
+                render.gameObject.layer = 0;
+                render.tag = "Untagged";
                 for(float f = 1f; f >= 0.05f; f-= 0.2f)
                 {
                     Color color = material.color;

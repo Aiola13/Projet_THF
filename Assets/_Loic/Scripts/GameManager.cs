@@ -48,6 +48,11 @@ public class GameManager : MonoBehaviour
         [Tooltip("Contient ma coroutine")]
         [SerializeField] private Coroutine delay;
 
+
+        [Header("DEBUG+++")]
+        [SerializeField] public Highlighter highlighter;
+        [SerializeField] public bool touchHand = false;
+
 	#endregion
 
 
@@ -74,9 +79,7 @@ public class GameManager : MonoBehaviour
             if(p.tag == "PlatformPrinter")
             {
                 platformPrinter.Add(p);
-
-                //printerList.Add(Instantiate(printerPrefab, p.transform.position + new Vector3(0, -0.082f, 0), Quaternion.Euler(180, 0, 0), p.transform));
-                printerList.Add(Instantiate(printerPrefab, p.transform.position + new Vector3(0, -0.077f, 0), Quaternion.Euler(90, 0, 0), p.transform));
+                printerList.Add(Instantiate(printerPrefab, p.transform.position + new Vector3(0, -0.077f, 0), Quaternion.Euler(180, 0, 0), p.transform));
             }
         }     
     }
@@ -130,7 +133,7 @@ public class GameManager : MonoBehaviour
 
 
 
-                printerList[0].transform.GetChild(3).gameObject.GetComponent<VolumicVR.PrinterStand>().PrintEndedEvent += OnPrintingEnded;
+                printerList[0].transform.GetChild(1).gameObject.GetComponent<VolumicVR.PrinterStand>().PrintEndedEvent += OnPrintingEnded;
                 if(doUpdateUI)
                 {
                     doUpdateUI = false;
@@ -163,7 +166,9 @@ public class GameManager : MonoBehaviour
             {
                 if(!p.stateOpen && !p.animationEnded)
                     p.OpenPlatform("PlatformPrinter");
+            
             }
+            
             dome.StopSubCourotine();
                 
 
@@ -195,30 +200,32 @@ public class GameManager : MonoBehaviour
 
     IEnumerator LookAtRetard()
     {
+        printerList.ForEach((t) => {
+            t.gameObject.tag = "Printer";
+            t.gameObject.layer = 9;
+        });
+                        
         yield return new WaitForSeconds(3.0f);
 
         printerList.ForEach((t) => {
-            var relativePos = player.transform.position - t.transform.GetChild(3).gameObject.transform.position;
+            var relativePos = player.transform.position - t.transform.position;
             // Only rotation on y axis
-            relativePos.y = 0;
+            //relativePos.y = 0;
+            //relativePos.x = 0;
+            //relativePos.z = 0;
 
-            Quaternion rotation = Quaternion.LookRotation(relativePos, Vector3.up);
+            Quaternion rotation = Quaternion.LookRotation(relativePos);
            
-            t.transform.GetChild(3).gameObject.transform.rotation = Quaternion.RotateTowards(t.transform.GetChild(3).gameObject.transform.rotation, rotation, 500.0f * Time.deltaTime);
+            t.transform.rotation = Quaternion.RotateTowards(t.transform.rotation, rotation, 500.0f * Time.deltaTime);
         });
-        Debug.Log("I am doing this fucking rotation !!!!!!!!!!!!!");
+         Debug.Log("Rotation Printer");
     }
 
     IEnumerator LaunchPrint()
     {
         yield return new WaitForSeconds(5.0f);
         foreach(var t in printerList)
-            t.transform.GetChild(3).gameObject.GetComponent<VolumicVR.PrinterStand>().StartPrinting();
-    }
-
-    void InitialState()
-    {
-        
+            t.transform.GetChild(1).gameObject.GetComponent<VolumicVR.PrinterStand>().StartPrinting();
     }
 
     public void OnPrintingEnded(object o, EventArgs e)
@@ -233,11 +240,18 @@ public class GameManager : MonoBehaviour
     public void LaunchMoonTag(object o,EventArgs e)
     {
         helicopterPrefab.GetComponent<Helicopter>().PaintEndedEvent -= LaunchMoonTag; 
+        
+        StartCoroutine(CoroutineLaunchMoonTag());
+    }
+
+
+    IEnumerator CoroutineLaunchMoonTag()
+    {
+        yield return new WaitForSeconds(7.0f);
         boxPrefab.transform.SetParent(null);
         boxPrefab.AddComponent<Rigidbody>();
 
         Debug.Log("Launch MOOOOOON TAGGGGGGGGGGGGGGGGGG");
-
     }
 
     public void LaunchPaint3D(object o,EventArgs e)
@@ -253,7 +267,7 @@ public class GameManager : MonoBehaviour
         foreach(Platform p in platformPrinter)
             p.ClosePlatform("PlatformPrinter");
 
-        printerList[0].transform.GetChild(3).gameObject.GetComponentInChildren<Highlighter>().HighLighterEndedEvent -= OnHighLighterEnded;
+        printerList[0].transform.GetChild(1).gameObject.GetComponentInChildren<Highlighter>().HighLighterEndedEvent -= OnHighLighterEnded;
 
         foreach(GameObject p in printerList)
             p.SetActive(false);

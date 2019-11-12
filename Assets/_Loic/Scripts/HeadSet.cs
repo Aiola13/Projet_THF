@@ -26,6 +26,8 @@ public class HeadSet : MonoBehaviour
     private bool QRCodeEverHited = false;
     public GameObject UI;
 
+    public AudioSource audioSource;
+    public bool once = true;
     
 
     void Awake()
@@ -38,6 +40,11 @@ public class HeadSet : MonoBehaviour
     {
         
         //if(!QRCodeEverHited)
+        if(this.GetComponent<VRTK_InteractableObject>().IsInSnapDropZone() && once)
+        {
+            once = false;
+            UI.SetActive(true);
+        }
         
         if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, Mathf.Infinity, layerMask))
         {
@@ -49,14 +56,12 @@ public class HeadSet : MonoBehaviour
             var variable = GetRaycastHit();
             if(variable == 7)
             {
+                audioSource.Play();
                 GameManager.instance.QRCodeHited = true;
                 QRCodeEverHited = true;
             }
             else
                 HitEvent?.Invoke(this, variable);
-
-
-            
 
         }
         else
@@ -66,10 +71,6 @@ public class HeadSet : MonoBehaviour
             //GameManager.instance.QRCodeHited = false;
         }
 
-
-
-            
-        
     }
 
 

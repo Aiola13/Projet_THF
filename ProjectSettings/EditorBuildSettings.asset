@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/_Loic/Scenes/TestScene.unity
     guid: a38b64592e160524a990990317912335
+  - enabled: 1
+    path: Assets/_Loic/Scenes/EndScene.unity
+    guid: 4edbcc9b66e1e2442a9ce2f50416d41f
   m_configObjects: {}

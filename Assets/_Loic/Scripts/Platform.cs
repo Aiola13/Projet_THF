@@ -8,6 +8,8 @@ public class Platform : MonoBehaviour
 
     [SerializeField] public bool animationEnded = false;
     [SerializeField] public bool stateOpen = false;
+    [SerializeField] public AudioSource sound;
+    [SerializeField] private bool hasRun = false;
 
     void Awake()
     {
@@ -19,6 +21,19 @@ public class Platform : MonoBehaviour
 
     public void OpenPlatform(string _tag)
     {
+        if(_tag == "PlatformArm" && !hasRun)
+        {
+            sound.PlayDelayed(0.5f);
+            hasRun = true;
+        }
+
+        if(_tag == "PlatformPrinter" && !hasRun)
+        {
+            sound.PlayDelayed(0.5f);
+            hasRun = true;
+        }
+        
+
         if(_tag == "PlatformPrinter")
         {
             Debug.Log("OpenPlatform" + _tag);
@@ -35,6 +50,18 @@ public class Platform : MonoBehaviour
 
     public void ClosePlatform(string _tag)
     {
+        if(_tag == "PlatformArm" && hasRun)
+        {
+            sound.PlayOneShot(sound.clip);
+            hasRun = false;
+        }
+        else if(_tag != "PlatformArm" && !hasRun)
+        {
+            sound.PlayDelayed(0.8f);
+            hasRun = true;
+        }
+        
+
         if(_tag == "PlatformPrinter")
         {
             Debug.Log("ClosePlatform" + _tag);
@@ -53,6 +80,8 @@ public class Platform : MonoBehaviour
     {
         if(this.tag == _tag)
         {
+            //sound.PlayOneShot(sound.clip);
+            sound.PlayDelayed(1f);
             Debug.Log("OpenPlatformDelay");
             this.GetComponent<Animator>().SetBool("Close", false);
             this.GetComponent<Animator>().SetBool("Open", true);

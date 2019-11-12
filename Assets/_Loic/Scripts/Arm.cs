@@ -7,6 +7,10 @@ public class Arm : MonoBehaviour
 
     [SerializeField] public bool animationEnded = false;
     [SerializeField] public bool stateOpen = false;
+    [SerializeField] public AudioSource sound;
+    [SerializeField] private bool hasRun = false;
+
+
 
     // Start is called before the first frame update
     void Start()
@@ -54,6 +58,11 @@ public class Arm : MonoBehaviour
     {
         yield return new WaitForSeconds(time);
         Debug.Log("OpenScanDelay");
+        if(!hasRun)
+        {
+            sound.PlayOneShot(sound.clip);
+            hasRun = true;
+        }
         this.GetComponent<Animator>().SetBool("Scan", false);
         this.GetComponent<Animator>().SetBool("In", true);
         this.GetComponent<Animator>().SetBool("Out", false);
@@ -65,6 +74,7 @@ public class Arm : MonoBehaviour
     {
         yield return new WaitForSeconds(time);
         Debug.Log("LaunchScanDelay");
+        sound.PlayOneShot(sound.clip);
         //if(platform.tag == "PlatformBras")
         this.GetComponent<Animator>().SetBool("Scan", true);
         this.GetComponent<Animator>().SetBool("In", false);
@@ -76,6 +86,7 @@ public class Arm : MonoBehaviour
         yield return new WaitForSeconds(time);
         Destroy(GameManager.instance.scanEffetInstance);
         Debug.Log("CloseScanDelay");
+        sound.PlayDelayed(2f);
         //if(platform.tag == "PlatformBras")
         this.GetComponent<Animator>().SetBool("In", false);
         this.GetComponent<Animator>().SetBool("Scan", false);

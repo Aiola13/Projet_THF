@@ -41,6 +41,8 @@ namespace VolumicVR
 
 		#region INSPECTOR FIELDS
 
+		public AudioSource		audioSource;
+
 		[Header("Printer")]
 		[SerializeField] private Printer		_printer;
 		[SerializeField] private Transform      _printSpot;
@@ -96,6 +98,8 @@ namespace VolumicVR
 		[ContextMenu ( "StartPrinting" )]
 		public void StartPrinting ()
 		{
+			audioSource.Play();
+
 			_printer.ActivateGrabbables ( false );
 
 			_printedObject = Instantiate ( GetAccordingSTL ( objectToPrint ), _printSpot.position, Quaternion.identity, _printSpot );
@@ -152,6 +156,8 @@ namespace VolumicVR
 			_printer.ActivateGrabbables ( true );
 
 			_printedObject.transform.parent = _grabbableTray;
+
+			audioSource.enabled = false;
 
 			PrintEndedEvent?.Invoke ( this, EventArgs.Empty );
 		}
