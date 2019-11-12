@@ -52,7 +52,8 @@ public class Platform : MonoBehaviour
     {
         if(_tag == "PlatformArm" && hasRun)
         {
-            sound.PlayOneShot(sound.clip);
+            //sound.PlayOneShot(sound.clip);
+            sound.PlayDelayed(0.8f);
             hasRun = false;
         }
         else if(_tag != "PlatformArm" && !hasRun)

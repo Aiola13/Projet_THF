@@ -86,7 +86,7 @@ public class Arm : MonoBehaviour
         yield return new WaitForSeconds(time);
         Destroy(GameManager.instance.scanEffetInstance);
         Debug.Log("CloseScanDelay");
-        sound.PlayDelayed(2f);
+        sound.PlayDelayed(2.7f);
         //if(platform.tag == "PlatformBras")
         this.GetComponent<Animator>().SetBool("In", false);
         this.GetComponent<Animator>().SetBool("Scan", false);

@@ -9,7 +9,7 @@ public class Dome : MonoBehaviour
     public MeshRenderer render;
     [SerializeField] public AudioSource sound;
 
-
+    public bool once = true;
 
     // animate the game object from -1 to +1 and back
     public float minimum = -1.0F;
@@ -55,7 +55,12 @@ public class Dome : MonoBehaviour
     {
         sound.enabled = false;
         StopCoroutine(DataTransfered());
-        render.material = materialTransparent;
+        if(once)
+        {
+            render.material = materialTransparent;
+            once = false;
+        }
+            
         StartCoroutine(SetAlphaOverTime(render.material, "Fade"));
         
         
@@ -87,7 +92,7 @@ public class Dome : MonoBehaviour
                     //color.a = Mathf.Lerp( 0f, 1f, 25.0f * Time.deltaTime);
                     color.a = f;
                     material.color = color;
-                    yield return new WaitForSeconds(0.001f);
+                    yield return new WaitForSeconds(0.01f);
                 }
             break;
         }

@@ -87,7 +87,7 @@ public class HeadSet : MonoBehaviour
             case "Printer":
                 return 3;
 
-            case "Helicopere":
+            case "Helicoptere":
                 return 4;
 
             case "Data":

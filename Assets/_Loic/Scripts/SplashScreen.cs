@@ -17,7 +17,19 @@ public class SplashScreen : MonoBehaviour
     // Update is called once per frame
     IEnumerator DisplayScene()
     {
+        //yield return new WaitForSeconds(timer);
+        //SceneManager.LoadScene(levelToLoad);
+        //SceneManager.LoadSceneAsync("levelToLoad");
+
         yield return new WaitForSeconds(timer);
-        SceneManager.LoadScene(levelToLoad);
+        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(levelToLoad);
+         
+
+        // Wait until the asynchronous scene fully loads
+        while (!asyncLoad.isDone)
+        {
+            yield return null;
+            
+        }
     }
 }

@@ -25,7 +25,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 8263a93e0770a1546932b6b530eba973, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.3
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -69,7 +69,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -150,11 +150,24 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8261002097729819894}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.75204515, y: 1.922698, z: 0.7411947}
-  m_Center: {x: -0.0018336773, y: 0.90605974, z: -0.013243198}
+  m_Size: {x: 0.75204515, y: 1.7859039, z: 0.4346695}
+  m_Center: {x: -0.0018336773, y: 0.9060011, z: 0.005517006}
+--- !u!65 &8051395585304998795
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8846810299626510782}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.45438182, y: 0.13329905, z: 0.40372726}
+  m_Center: {x: -0.23324227, y: -0.05785173, z: 0.000000014901161}
 --- !u!1001 &2049110386089144422
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -234,6 +247,16 @@ PrefabInstance:
     - target: {fileID: 414205796, guid: 03852d2fb074c1647a308745ccb82d17, type: 3}
       propertyPath: m_LocalPosition.z
       value: 0.03302159
+      objectReference: {fileID: 0}
+    - target: {fileID: 4761032338483658045, guid: 03852d2fb074c1647a308745ccb82d17,
+        type: 3}
+      propertyPath: audioSource
+      value: 
+      objectReference: {fileID: 7717774650582421425}
+    - target: {fileID: 4761032338483658045, guid: 03852d2fb074c1647a308745ccb82d17,
+        type: 3}
+      propertyPath: _timeMultiplier
+      value: 75
       objectReference: {fileID: 0}
     - target: {fileID: 414205795, guid: 03852d2fb074c1647a308745ccb82d17, type: 3}
       propertyPath: m_Layer
@@ -879,6 +902,12 @@ GameObject:
 --- !u!4 &6808724268124147032 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4761032338483658046, guid: 03852d2fb074c1647a308745ccb82d17,
+    type: 3}
+  m_PrefabInstance: {fileID: 2049110386089144422}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &8846810299626510782 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7397663843723864536, guid: 03852d2fb074c1647a308745ccb82d17,
     type: 3}
   m_PrefabInstance: {fileID: 2049110386089144422}
   m_PrefabAsset: {fileID: 0}
