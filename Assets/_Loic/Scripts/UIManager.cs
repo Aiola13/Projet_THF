@@ -20,13 +20,18 @@ public class UIManager : MonoBehaviour
     public Sprite[] logos;
     [SerializeField] private int index;
     public float typingSpeed;
-    [SerializeField] private float gameTimer = 0f;
+    [SerializeField] public float gameTimer = 0f;
     private Coroutine delay;
     public GameObject box;
+
+    public AudioSource audioSource;
+
+    public bool once = true;
 
     // Start is called before the first frame update
     void Start()
     {
+        gameTimer = 250f;
         index = 0;
         //GameManager.instance.UpdateUIEvent += NextSentence;
         this.GetComponentInParent<HeadSet>().HitEvent += NextSentence;
@@ -60,7 +65,7 @@ public class UIManager : MonoBehaviour
             textDisplay.text = "";    
         }*/
         //GameManager.instance.UpdateUIEvent += NextSentence;
-        if(i > 0 && i < 7)
+        if(i > 0 && i < 8)
         {
             //StopCoroutine(delay);
             index = 0;
@@ -91,7 +96,8 @@ public class UIManager : MonoBehaviour
 
     public void Timer()
     {
-        gameTimer += Time.deltaTime;
+        //gameTimer += Time.deltaTime;
+        gameTimer -= Time.deltaTime;
 
         int seconds = (int)(gameTimer % 60);
         int minutes = (int)(gameTimer / 60) % 60;
@@ -104,6 +110,16 @@ public class UIManager : MonoBehaviour
         hourDisplay.text = System.DateTime.Now.ToString("dd MMMM yyyy  HH:mm");
         Timer();     
 
+        if(gameTimer <= 0)
+        {
+            if(once)
+            {
+                audioSource.Play();
+                once = false;
+            }
+            gameTimer = 0;
+            StartCoroutine(AlertEnding());
+        }
         /*if(gameTimer >= 360f)
         {
             EndingEvent();
@@ -119,6 +135,12 @@ public class UIManager : MonoBehaviour
     public void EndingEvent()
     {
 
+    }
+
+    IEnumerator AlertEnding()
+    {
+        timerDisplay.enabled = !timerDisplay.enabled;
+        yield return new WaitForSeconds(1f);
     }
 
 }

@@ -16,6 +16,7 @@ public class Highlighter : MonoBehaviour
         [SerializeField] private MeshRenderer _renderer;
        // [SerializeField] private PrinterStand printerStand;
         private Coroutine _delay;
+        private bool launch = true;
     #endregion
 
     #region EVENTS
@@ -50,9 +51,19 @@ public class Highlighter : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.tag == "Hand")
+        if(other.tag == "Hand" && launch)
         {
             HighLighterEndedEvent?.Invoke ( this, EventArgs.Empty );
+            launch = false;
+        }
+    }
+
+    void OnTriggerStay(Collider other)
+    {
+        if(other.tag == "Hand" && launch)
+        {
+            HighLighterEndedEvent?.Invoke ( this, EventArgs.Empty );
+            launch = false;
         }
     }
 }

@@ -10,13 +10,16 @@ public class Helicopter : MonoBehaviour
     Coroutine delay;
     public MeshRenderer tail;
     public GameObject particle;
+    public GameObject helicopterCollider;
 
     public List<Image> image = new List<Image>();
+    public List<Image> imageBis = new List<Image>();
 
     #region EVENTS
 
 		public event EventHandler HelicopterEndedEvent;
         public event EventHandler PaintEndedEvent;
+        public event EventHandler MecaViewEndedEvent;
 
     #endregion
 
@@ -162,5 +165,37 @@ public class Helicopter : MonoBehaviour
         Color color = tail.materials[1].color;
         color.a = 0f;
         tail.materials[1].color = color;
+    }
+
+
+
+    public void LaunchMecaView()
+    {
+
+        StartCoroutine(LaunchMecaViewDelayed());
+        
+    }
+
+    IEnumerator LaunchMecaViewDelayed()
+    {
+        foreach(var i in imageBis)
+        {
+            Color c = i.color;
+            c.a = Mathf.Lerp( 0f, 1f, 50.0f * Time.deltaTime);
+            i.color = c;
+            Debug.Log("Je modifie la transparence !!!!!!");
+        }
+
+        yield return new WaitForSeconds(10.0f);
+
+        foreach(var i in imageBis)
+        {
+            Color c = i.color;
+            c.a = Mathf.Lerp( 1f, 0f, 50.0f * Time.deltaTime);
+            i.color = c;
+            Debug.Log("Je modifie la transparence !!!!!!");
+        }
+        
+        MecaViewEndedEvent?.Invoke ( this, EventArgs.Empty );
     }
 }

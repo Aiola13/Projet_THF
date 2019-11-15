@@ -39,7 +39,9 @@ public class Box : MonoBehaviour
     public Color startColor;
     public Color endColor;
     public bool repeatColor = false;
-    public AudioSource audioSource;
+    public AudioSource audioSourceFall;
+    public AudioSource audioSourceBeep;
+    public AudioClip audioclip;
 
     [SerializeField] private float startTime;
     [SerializeField] private float gameTimer;
@@ -52,7 +54,7 @@ public class Box : MonoBehaviour
     }
 
     private void OnCollisionEnter(Collision other) {
-        audioSource.PlayOneShot(audioSource.clip);
+        audioSourceFall.PlayOneShot(audioclip);
         this.gameObject.tag = "Box";
         this.gameObject.layer = 9;
         StartCoroutine(DataSend());
@@ -61,16 +63,17 @@ public class Box : MonoBehaviour
 
     IEnumerator DataSend()
     {
-
+        
         WifiEvent?.Invoke(this, EventArgs.Empty);
         foreach(var lt in lights)
         {
             lt.gameObject.SetActive(true);
         }
-        
+        audioSourceBeep.Play();
         Debug.Log("Je suis dans DATA SEND !!!!!!!!!!!!!!!!!!!!");
         while(gameTimer <= 30f)
         {
+            
            /*  foreach(var lt in lights)
             {
                 lt.SetActive(test);
@@ -128,10 +131,10 @@ public class Box : MonoBehaviour
             gameTimer += Time.deltaTime;
             yield return new WaitForSeconds(waitingTime);
         } 
-              
+              audioSourceBeep.Stop();
 
         yield return new WaitForSeconds(1.0f);
-
+        
     
         Color c = blackFade.color;
         c.a = Mathf.Lerp( 0f, 1f, 100.0f * Time.deltaTime);

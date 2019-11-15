@@ -27,6 +27,7 @@ TagManager:
   - Data
   - Box
   - QR
+  - ENSAM
   layers:
   - Default
   - TransparentFX

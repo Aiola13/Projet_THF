@@ -7,6 +7,7 @@ using VRTK;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Linq;
+using UnityEngine.SceneManagement;
 
 
 public class GameManager : MonoBehaviour
@@ -39,6 +40,7 @@ public class GameManager : MonoBehaviour
         [SerializeField] public GameObject scanEffetInstance;
         [SerializeField] public GameObject printerPrefab;
         [SerializeField] public GameObject player;
+        [SerializeField] public GameObject VRTK_SDKManager;
         [SerializeField] public GameObject helicopterPrefab;
         [SerializeField] public GameObject boxPrefab;
         [SerializeField] public CameraShake cameraShake;
@@ -87,113 +89,155 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(platformPole.stateOpen == true && pole.animationEnded == false && pole.stateOpen == false)
+
+        if(Input.GetKey(KeyCode.A))
         {
-            if(hasRun)
-                headSetInstance = Instantiate(headSetPrefab, new Vector3(0.172f, 0, -2.03f), Quaternion.identity);
-                
-                
-            hasRun = false;
-            pole.OpenPole();
-
-
-            StartCoroutine(LookAtRetardArm());
+            SceneManager.LoadScene("SplashScreenScene");
+            Destroy(VRTK_SDKManager);
+            Destroy(this.gameObject);
         }
-            
-        if(headSetSnapped)
+
+        if(SceneManager.GetActiveScene().name == "TestScene")
         {
-            if(!headSetInstance.GetComponent<HeadSet>().UI.activeInHierarchy)
-                headSetInstance.GetComponent<HeadSet>().UI.SetActive(true);
-
-            /*if(updateUI)
-                StartCoroutine(UpdateUI());*/
-
-            if(pole.stateOpen)
-                pole.ClosePole();
-
-            if(pole.animationEnded && !pole.stateOpen && platformPole.stateOpen)
-                platformPole.ClosePlatform("PlatformPole");
-
-            if(!platformPole.stateOpen && !platformArm.stateOpen && !platformArm.animationEnded)
+            if(platformPole.stateOpen == true && pole.animationEnded == false && pole.stateOpen == false)
             {
-                platformArm.OpenPlatform("PlatformArm");
-                delay = StartCoroutine(arm.OpenScanDelay(5.0f));
-                
-                hasRun = true;
-            }
-
-            if(hasRun && platformArm.stateOpen && arm.animationEnded && arm.stateOpen && QRCodeHited)
-            {
-                updateUI = true;
-                hasRun = false;
-                arm.LaunchScan();
-                
-                scanEffetInstance = Instantiate(scanEffectPrefab, new Vector3(player.transform.position.x, 1, player.transform.position.z), Quaternion.identity);
-                delay = StartCoroutine(arm.CloseScanDelay(10.0f));
-
-
-
-                printerList[0].transform.GetChild(1).gameObject.GetComponent<VolumicVR.PrinterStand>().PrintEndedEvent += OnPrintingEnded;
-                if(doUpdateUI)
-                {
-                    doUpdateUI = false;
-                    updateUI = true;
-                }
+                if(hasRun)
+                    headSetInstance = Instantiate(headSetPrefab, new Vector3(0.172f, 0, -2.03f), Quaternion.identity);
                     
-                dome.StartSubCourotine();
+                    
+                hasRun = false;
+                pole.OpenPole();
 
+
+                StartCoroutine(LookAtRetardArm());
             }
-
-            if(!hasRun && QRCodeHited && platformArm.stateOpen && arm.animationEnded && !arm.stateOpen)
-            {
-
-                platformArm.ClosePlatform("PlatformArm");
-
-                //Hide Prefab to save ressources
-                arm.gameObject.SetActive(false);
-                pole.gameObject.SetActive(false);
-
-                dataTransmitted = true;
-                showPrinter = true;
-            }
-
-        }
-
-        if(showPrinter && QRCodeHited && platformArm.animationEnded && !platformArm.stateOpen && arm.animationEnded && !arm.stateOpen)
-        {
-            
-            foreach(Platform p in platformPrinter)
-            {
-                if(!p.stateOpen && !p.animationEnded)
-                    p.OpenPlatform("PlatformPrinter");
-            
-            }
-            
-            dome.StopSubCourotine();
                 
-
-            delay = StartCoroutine(LookAtRetard());
-
-            if(dataTransmitted)        
+            if(headSetSnapped)
             {
-                dataTransmitted = false;
+                if(!headSetInstance.GetComponent<HeadSet>().UI.activeInHierarchy)
+                    headSetInstance.GetComponent<HeadSet>().UI.SetActive(true);
+
+                /*if(updateUI)
+                    StartCoroutine(UpdateUI());*/
+
+                if(pole.stateOpen)
+                    pole.ClosePole();
+
+                if(pole.animationEnded && !pole.stateOpen && platformPole.stateOpen)
+                    platformPole.ClosePlatform("PlatformPole");
+
+                if(!platformPole.stateOpen && !platformArm.stateOpen && !platformArm.animationEnded)
+                {
+                    platformArm.OpenPlatform("PlatformArm");
+                    delay = StartCoroutine(arm.OpenScanDelay(5.0f));
+                    
+                    hasRun = true;
+                }
+
+                if(hasRun && platformArm.stateOpen && arm.animationEnded && arm.stateOpen && QRCodeHited)
+                {
+                    updateUI = true;
+                    hasRun = false;
+                    arm.LaunchScan();
+                    
+                    scanEffetInstance = Instantiate(scanEffectPrefab, new Vector3(player.transform.position.x, 1, player.transform.position.z), Quaternion.identity);
+                    delay = StartCoroutine(arm.CloseScanDelay(10.0f));
+
+
+
+                    printerList[0].transform.GetChild(1).gameObject.GetComponent<VolumicVR.PrinterStand>().PrintEndedEvent += OnPrintingEnded;
+                    if(doUpdateUI)
+                    {
+                        doUpdateUI = false;
+                        updateUI = true;
+                    }
+                        
+                    dome.StartSubCourotine();
+
+                }
+
+                if(!hasRun && QRCodeHited && platformArm.stateOpen && arm.animationEnded && !arm.stateOpen)
+                {
+
+                    platformArm.ClosePlatform("PlatformArm");
+
+                    //Hide Prefab to save ressources
+                    arm.gameObject.SetActive(false);
+                    pole.gameObject.SetActive(false);
+
+                    dataTransmitted = true;
+                    showPrinter = true;
+                }
+
+            }
+
+            if(showPrinter && QRCodeHited && platformArm.animationEnded && !platformArm.stateOpen && arm.animationEnded && !arm.stateOpen)
+            {
+
+                    /******************
+                    *******************
+                    *******TEST********
+                    *******************
+                    ******************/
+
+
+
+
+
+
+
+
+
+
+
+                    StartCoroutine(SlowDownDataTransfer());
+
+
+
+
+
+
+
+
+
+
+
+                
+                /*foreach(Platform p in platformPrinter)
+                {
+                    if(!p.stateOpen && !p.animationEnded)
+                        p.OpenPlatform("PlatformPrinter");
+                
+                }
+                
+                dome.StopSubCourotine();
+                    
+
+                delay = StartCoroutine(LookAtRetard());
+
+                if(dataTransmitted)        
+                {
+                    dataTransmitted = false;
+                    updateUI = true;
+                    delay = StartCoroutine(LaunchPrint());
+                }   */
+            }
+
+
+            if(showHelicopter)
+            {
+                showPrinter = false;
+                if(!helicopterPrefab.activeInHierarchy)
+                    helicopterPrefab.SetActive(showHelicopter);         
+                showHelicopter = false;
+
                 updateUI = true;
-                delay = StartCoroutine(LaunchPrint());
-            }   
-        }
-
-
-        if(showHelicopter)
-        {
-            showPrinter = false;
-            if(!helicopterPrefab.activeInHierarchy)
-                helicopterPrefab.SetActive(showHelicopter);         
-            showHelicopter = false;
-
-            updateUI = true;
-            
-            helicopterPrefab.GetComponent<Helicopter>().HelicopterEndedEvent += LaunchPaint3D;   
-            helicopterPrefab.GetComponent<Helicopter>().PaintEndedEvent += LaunchMoonTag;        
+                
+                //helicopterPrefab.GetComponent<Helicopter>().HelicopterEndedEvent += LaunchPaint3D;   
+                helicopterPrefab.GetComponent<Helicopter>().HelicopterEndedEvent += LaunchMecaView;
+                helicopterPrefab.GetComponent<Helicopter>().MecaViewEndedEvent += LaunchPaint3D;
+                helicopterPrefab.GetComponent<Helicopter>().PaintEndedEvent += LaunchMoonTag;        
+            }
         }
 
     }
@@ -256,10 +300,39 @@ public class GameManager : MonoBehaviour
 
     public void LaunchPaint3D(object o,EventArgs e)
     {
+        helicopterPrefab.GetComponent<Helicopter>().helicopterCollider.tag = "Helicoptere";
         helicopterPrefab.GetComponent<Helicopter>().HelicopterEndedEvent -= LaunchPaint3D;
         helicopterPrefab.GetComponent<Helicopter>().LaunchTailPaint("Fade");
         helicopterPrefab.GetComponent<Helicopter>().LaunchTailPaint("Opaque");
     }
+
+
+
+
+
+
+    public void LaunchMecaView(object o,EventArgs e)
+    {
+        helicopterPrefab.GetComponent<Helicopter>().HelicopterEndedEvent -= LaunchMecaView;
+
+        helicopterPrefab.GetComponent<Helicopter>().LaunchMecaView();
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     public void OnHighLighterEnded(object o, EventArgs e)
     {
@@ -300,6 +373,40 @@ public class GameManager : MonoBehaviour
         Quaternion rotation = Quaternion.LookRotation(relativePos, Vector3.up);
         
         arm.transform.rotation = Quaternion.RotateTowards(arm.transform.rotation, rotation, 500.0f * Time.deltaTime);
+    }
+
+
+
+
+
+
+
+
+
+    //Slow Down Data transfer
+    IEnumerator SlowDownDataTransfer()
+    {
+        yield return new WaitForSeconds(5.0f);
+
+        foreach(Platform p in platformPrinter)
+        {
+            if(!p.stateOpen && !p.animationEnded)
+                p.OpenPlatform("PlatformPrinter");
+        
+        }
+            
+            dome.StopSubCourotine();
+                
+
+            delay = StartCoroutine(LookAtRetard());
+
+            if(dataTransmitted)        
+            {
+                dataTransmitted = false;
+                updateUI = true;
+                delay = StartCoroutine(LaunchPrint());
+            }   
+
     }
   
 }

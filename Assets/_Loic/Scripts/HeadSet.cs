@@ -54,7 +54,7 @@ public class HeadSet : MonoBehaviour
             GameManager.instance.QRCodeHited = true;
             QRCodeEverHited = true;*/
             var variable = GetRaycastHit();
-            if(variable == 7)
+            if(variable == 8 && !QRCodeEverHited)
             {
                 audioSource.Play();
                 GameManager.instance.QRCodeHited = true;
@@ -96,8 +96,12 @@ public class HeadSet : MonoBehaviour
             case "Box":
                 return 6;
 
-            case "QR":
+            case "ENSAM":
                 return 7;
+
+            case "QR":
+                return 8;
+
 
             default:
                 //Debug.LogError ( hit.collider.tag.ToString () + " doe not exists !" );

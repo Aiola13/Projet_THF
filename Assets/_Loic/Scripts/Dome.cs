@@ -18,6 +18,8 @@ public class Dome : MonoBehaviour
     // starting value for the Lerp
     static float t = 0.0f;
 
+    public bool isFading = true;
+
     IEnumerator DataTransfered()
     {
         yield return new WaitForSeconds(0.1f);
@@ -61,7 +63,8 @@ public class Dome : MonoBehaviour
             once = false;
         }
             
-        StartCoroutine(SetAlphaOverTime(render.material, "Fade"));
+        if(isFading)
+            StartCoroutine(SetAlphaOverTime(render.material, "Fade"));
         
         
     }
@@ -86,7 +89,7 @@ public class Dome : MonoBehaviour
             case "Fade":
                 render.gameObject.layer = 0;
                 render.tag = "Untagged";
-                for(float f = 1f; f >= 0.05f; f-= 0.2f)
+                for(float f = 1f; f >= 0.05f; f-= 0.1f)
                 {
                     Color color = material.color;
                     //color.a = Mathf.Lerp( 0f, 1f, 25.0f * Time.deltaTime);
@@ -94,6 +97,7 @@ public class Dome : MonoBehaviour
                     material.color = color;
                     yield return new WaitForSeconds(0.01f);
                 }
+                isFading = false;
             break;
         }
     }
