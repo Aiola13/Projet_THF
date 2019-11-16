@@ -11,6 +11,7 @@ public class Helicopter : MonoBehaviour
     public MeshRenderer tail;
     public GameObject particle;
     public GameObject helicopterCollider;
+    public GameObject helicopterColliderBis;
 
     public List<Image> image = new List<Image>();
     public List<Image> imageBis = new List<Image>();

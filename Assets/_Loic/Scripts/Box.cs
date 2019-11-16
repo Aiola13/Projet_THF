@@ -42,6 +42,7 @@ public class Box : MonoBehaviour
     public AudioSource audioSourceFall;
     public AudioSource audioSourceBeep;
     public AudioClip audioclip;
+    public GameObject boxCollider;
 
     [SerializeField] private float startTime;
     [SerializeField] private float gameTimer;
@@ -57,6 +58,7 @@ public class Box : MonoBehaviour
         audioSourceFall.PlayOneShot(audioclip);
         this.gameObject.tag = "Box";
         this.gameObject.layer = 9;
+        boxCollider.tag = "Box";
         StartCoroutine(DataSend());
 
     }

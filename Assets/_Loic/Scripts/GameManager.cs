@@ -301,6 +301,7 @@ public class GameManager : MonoBehaviour
     public void LaunchPaint3D(object o,EventArgs e)
     {
         helicopterPrefab.GetComponent<Helicopter>().helicopterCollider.tag = "Helicoptere";
+        helicopterPrefab.GetComponent<Helicopter>().helicopterColliderBis.tag = "Helicoptere";
         helicopterPrefab.GetComponent<Helicopter>().HelicopterEndedEvent -= LaunchPaint3D;
         helicopterPrefab.GetComponent<Helicopter>().LaunchTailPaint("Fade");
         helicopterPrefab.GetComponent<Helicopter>().LaunchTailPaint("Opaque");
